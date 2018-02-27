@@ -13,14 +13,25 @@ export default new Router({
       component: HomePage
     },
     {
+      // 主页路由
       path: '/home',
       name: 'HomePage',
-      component: HomePage
-    },
-    {
-      path: '/home/plan/developmentplan',
-      name: 'DevelopmentPlan',
-      component: DevelopmentPlan
+      component: HomePage,
+      children: [
+        {
+          path: '/plan',
+          name: 'Plan',
+          component: DevelopmentPlan,
+          children: [
+            {
+              path: '/developmentplan',
+              name: 'DevelopmentPlan',
+              component: DevelopmentPlan
+            }
+          ]
+        }
+      ]
+
     }
   ]
 })

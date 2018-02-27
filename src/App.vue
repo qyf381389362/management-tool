@@ -19,4 +19,9 @@ export default {
   text-align: center;
   color: #2c3e50;
 } */
+  #app {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
 </style>

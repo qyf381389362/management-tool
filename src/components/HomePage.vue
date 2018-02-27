@@ -1,5 +1,6 @@
 <template>
   <div class="layout">
+    <!-- 顶部 -->
     <Layout>
       <Header class="menu-dark">
         <Menu mode="horizontal" theme="dark" active-name="1" class="menu-dark">
@@ -24,7 +25,8 @@
       </Header>
        
     </Layout>
-    <Layout>
+    <!-- 中部 -->
+    <Layout class="main">
       <Sider hide-trigger>
         <Row>
           <Col span="8">
@@ -90,20 +92,13 @@
           </Col>
         </Row>
       </Sider> 
-      <Content class="content">
-        <Breadcrumb>
-          <Breadcrumb-Item href="/">软件计划过程</Breadcrumb-Item>
-          <Breadcrumb-Item>软件开发计划</Breadcrumb-Item>
-        </Breadcrumb>
-        <Card>
-          <div style="height:600px">马老师威武啊</div>
-        </Card>
-      </Content>
-            
+      <div>
+        <router-view></router-view>
+      </div>
     </Layout>
     <!-- 底部 -->
     <Layout>
-      <Footer class="layout-footer-center menu-dark">2017-2018 &copy; ACT 秦雨霏 </Footer>
+      <Footer class="footer layout-footer-center menu-dark">2017-2018 &copy; ACT 秦雨霏 </Footer>
     </Layout>
   </div>
 </template>
@@ -133,7 +128,7 @@ export default {
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
-    border-radius: 4px;
+    height: 100%;
     overflow: hidden;
 }
 .layout-con {
@@ -155,15 +150,20 @@ export default {
     margin: 0 auto;
     margin-right: 20px;
 }
-.content {
-  margin: 12px;
-  padding:0 10px 10px;
-  float: right;
+.main {
+  height: 100%;
+  overflow: auto;
 }
 .layout-footer-center {
   height: 60px;
   line-height: 60px;
   text-align: center;
   color: rgba(255,255,255,.7);
+}
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  z-index: 900; /*z-index 仅能在定位元素上奏效*/
 }
 </style>
