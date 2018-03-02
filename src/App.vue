@@ -1,14 +1,14 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:33 
- * @Last Modified by:   qinyufei 
- * @Last Modified time: 2018-03-02 16:33:33 
+ * @Last Modified by: qinyufei
+ * @Last Modified time: 2018-03-02 17:13:13
  */
 
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
