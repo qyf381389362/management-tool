@@ -1,3 +1,10 @@
+/*
+ * @Author: qinyufei 
+ * @Date: 2018-03-02 16:33:33 
+ * @Last Modified by:   qinyufei 
+ * @Last Modified time: 2018-03-02 16:33:33 
+ */
+
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->

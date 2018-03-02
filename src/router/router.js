@@ -1,3 +1,9 @@
+/*
+ * @Author: qinyufei
+ * @Date: 2018-03-02 16:33:13
+ * @Last Modified by:   qinyufei
+ * @Last Modified time: 2018-03-02 16:33:13
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/components/HomePage'
