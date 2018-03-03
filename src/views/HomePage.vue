@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:03 
- * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-02 19:14:05
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2018-03-03 17:14:58
  */
 
 <template>
@@ -99,14 +99,14 @@
           </Col>
         </Row>
       </Sider> 
-      <div>
+      <div class="container">
         <router-view></router-view>
       </div>
     </Layout>
     <!-- 底部 -->
-    <Layout>
+    <!-- <Layout>
       <Footer class="footer layout-footer-center menu-dark">2017-2018 &copy; ACT 秦雨霏 </Footer>
-    </Layout>
+    </Layout> -->
   </div>
 </template>
 
@@ -160,6 +160,9 @@ export default {
 .main {
   height: 100%;
   overflow: auto;
+}
+.container {
+  width: 100%;
 }
 .layout-footer-center {
   height: 60px;

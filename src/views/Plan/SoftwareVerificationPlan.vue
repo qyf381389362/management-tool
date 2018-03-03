@@ -1,14 +1,14 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 19:15:53 
- * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-02 19:17:27
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2018-03-03 17:20:03
  */
 
 <template>
   <Content class="content">
     <Breadcrumb>
-      <Breadcrumb-Item href="/">软件计划过程</Breadcrumb-Item>
+      <Breadcrumb-Item href="/home/plan">软件计划过程</Breadcrumb-Item>
       <Breadcrumb-Item>软件验证计划</Breadcrumb-Item>
     </Breadcrumb>
     <Card>
