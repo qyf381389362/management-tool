@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 19:15:53 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-03-03 17:20:03
+ * @Last Modified by: qinyufei
+ * @Last Modified time: 2018-03-04 21:32:00
  */
 
 <template>
@@ -12,7 +12,7 @@
       <Breadcrumb-Item>软件验证计划</Breadcrumb-Item>
     </Breadcrumb>
     <Card>
-      <div style="height:600px">马老师牛逼啊</div>
+      <div style="height:600px">马老师牛逼啊aaa</div>
     </Card>
   </Content>
 </template>
@@ -30,5 +30,5 @@ export default {
   margin: 12px;
   padding:0 10px 10px;
   float: right;
-}
+} 
 </style>

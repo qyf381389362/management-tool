@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:03 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-03-03 17:14:58
+ * @Last Modified by: qinyufei
+ * @Last Modified time: 2018-03-04 22:34:43
  */
 
 <template>
@@ -43,8 +43,8 @@
                   <Icon type="ios-folder"></Icon>
                   软件计划过程
                 </template>
-                <Menu-Item name='1-1'>软件开发计划</Menu-Item>
-                <Menu-Item name='1-2'>软件验证计划</Menu-Item>
+                <Menu-Item name='1-1'><div>软件开发计划</div></Menu-Item>
+                <Menu-Item name='1-2' href="/home/plan/developmentplan">软件验证计划</Menu-Item>
                 <Menu-Item name='1-3'>软件质量保证计划</Menu-Item>
                 <Menu-Item name='1-4'>软件合格审定计划</Menu-Item>
                 <Menu-Item name='1-5'>配置管理计划</Menu-Item>
@@ -124,10 +124,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-* {
-  margin:0;
-  padding:0;
-}
 .menu-dark {
   background-color: #1c2532;
 }

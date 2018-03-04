@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei
  * @Date: 2018-03-02 16:33:13
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-03-03 17:32:48
+ * @Last Modified by: qinyufei
+ * @Last Modified time: 2018-03-04 21:31:44
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -28,22 +28,19 @@ export default new Router({
         {
           path: 'plan',
           name: 'Plan',
-          component: DevelopmentPlan,
-          children: [
-            {
-              path: 'developmentplan',
-              name: 'DevelopmentPlan',
-              component: DevelopmentPlan
-            },
-            {
-              path: 'verificationplan',
-              name: 'VerificationPlan',
-              component: VerificationPlan
-            }
-          ]
+          component: DevelopmentPlan
+        },
+        {
+          path: 'plan/developmentplan',
+          name: 'DevelopmentPlan',
+          component: DevelopmentPlan
+        },
+        {
+          path: 'plan/verificationplan',
+          name: 'VerificationPlan',
+          component: VerificationPlan
         }
       ]
-
     }
   ]
 })

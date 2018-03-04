@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:32:50 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-03-03 17:19:47
+ * @Last Modified by: qinyufei
+ * @Last Modified time: 2018-03-04 21:38:30
  */
 
 <template>
@@ -26,15 +26,5 @@ export default {
 }
 </script>
 <style scoped>
-  .wrapper {
-    margin: 20px;
-    padding:0 10px 10px;
-  }
-  .content {
-    margin-top: 10px;
-    min-height: 750px;
-  }
-  .breadcrumb {
-    font-size: 16px;
-  }
+  
 </style>
