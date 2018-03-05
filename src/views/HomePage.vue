@@ -106,12 +106,12 @@
   <!-- </div> -->
   <el-container>
     <!-- 顶部导航 -->
-    <el-header></el-header>
+    <el-header height="30px" class="header"></el-header>
     <el-container>
       <!-- 侧边栏导航 -->
-      <el-aside>Aside</el-aside>
+      <el-aside width="200px" class="siderBar">Aside</el-aside>
       <!-- 内容区域 -->
-      <el-main></el-main>
+      <el-main class="main-content"></el-main>
     </el-container>
   </el-container>
 </template>
@@ -177,6 +177,16 @@ export default {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  z-index: 900; /*z-index 仅能在定位元素上奏效*/
+  z-index: 900; 
+}
+.header {
+  background-color: #1c2532;
+}
+.siderBar {
+  background-color: #2f4050;
+  /* min-height: 100%; */
+}
+.main-content {
+  background-color: #e6e9f2;
 }
 </style>
