@@ -2,13 +2,13 @@
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-04 22:34:43
+ * @Last Modified time: 2018-03-05 20:53:05
  */
 
 <template>
-  <div class="layout">
+  <!-- <div class="layout"> -->
     <!-- 顶部 -->
-    <Layout>
+    <!-- <Layout>
       <Header class="menu-dark">
         <Menu mode="horizontal" theme="dark" active-name="1" class="menu-dark">
           <div class="layout-logo"></div>
@@ -31,9 +31,9 @@
         </Menu>
       </Header>
        
-    </Layout>
+    </Layout> -->
     <!-- 中部 -->
-    <Layout class="main">
+    <!-- <Layout class="main">
       <Sider hide-trigger>
         <Row>
           <Col span="8">
@@ -102,12 +102,18 @@
       <div class="container">
         <router-view></router-view>
       </div>
-    </Layout>
-    <!-- 底部 -->
-    <!-- <Layout>
-      <Footer class="footer layout-footer-center menu-dark">2017-2018 &copy; ACT 秦雨霏 </Footer>
     </Layout> -->
-  </div>
+  <!-- </div> -->
+  <el-container>
+    <!-- 顶部导航 -->
+    <el-header></el-header>
+    <el-container>
+      <!-- 侧边栏导航 -->
+      <el-aside>Aside</el-aside>
+      <!-- 内容区域 -->
+      <el-main></el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -117,6 +123,7 @@ export default {
   },
   data () {
     return {
+      asideBar: []
     }
   }
 }
