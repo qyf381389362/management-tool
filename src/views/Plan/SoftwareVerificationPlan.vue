@@ -2,19 +2,21 @@
  * @Author: qinyufei 
  * @Date: 2018-03-02 19:15:53 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-04 21:32:00
+ * @Last Modified time: 2018-03-06 17:28:50
  */
-
+<!--软件计划过程之软件验证计划页面-->
 <template>
-  <Content class="content">
-    <Breadcrumb>
-      <Breadcrumb-Item href="/home/plan">软件计划过程</Breadcrumb-Item>
-      <Breadcrumb-Item>软件验证计划</Breadcrumb-Item>
-    </Breadcrumb>
-    <Card>
-      <div style="height:600px">马老师牛逼啊aaa</div>
-    </Card>
-  </Content>
+  <el-container>
+    <el-main class="wrapper">
+      <el-breadcrumb class="breadcrumb">
+        <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
+        <el-breadcrumb-item>软件验证计划</el-breadcrumb-item>
+      </el-breadcrumb>
+      <el-card class="content">
+        <div>马老师牛逼啊</div>
+      </el-card>
+    </el-main>
+  </el-container>
 </template>
 <script>
 export default {
@@ -26,9 +28,5 @@ export default {
 }
 </script>
 <style scoped>
-.content {
-  margin: 12px;
-  padding:0 10px 10px;
-  float: right;
-} 
+
 </style>

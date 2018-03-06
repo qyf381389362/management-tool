@@ -2,116 +2,56 @@
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-05 20:53:05
+ * @Last Modified time: 2018-03-06 17:19:50
  */
 
 <template>
-  <!-- <div class="layout"> -->
-    <!-- 顶部 -->
-    <!-- <Layout>
-      <Header class="menu-dark">
-        <Menu mode="horizontal" theme="dark" active-name="1" class="menu-dark">
-          <div class="layout-logo"></div>
-          <div class="layout-nav">
-            <Menu-Item name="1">
-              <Icon type=""></Icon>
-              内容管理
-            </Menu-Item>
-            <Menu-Item name="2">
-              用户管理
-            </Menu-Item>
-            <Menu-Item name="3">
-              综合管理
-            </Menu-Item>
-            <Menu-Item name="4">
-              <Icon type="person"></Icon>
-              当前用户
-            </Menu-Item>
-          </div>
-        </Menu>
-      </Header>
-       
-    </Layout> -->
-    <!-- 中部 -->
-    <!-- <Layout class="main">
-      <Sider hide-trigger>
-        <Row>
-          <Col span="8">
-            <Menu theme="dark" active-name="1-1" :open-names="['1']" style="width:200px;">
-              <Submenu name="1">
-                <template slot="title">
-                  <Icon type="ios-folder"></Icon>
-                  软件计划过程
-                </template>
-                <Menu-Item name='1-1'><div>软件开发计划</div></Menu-Item>
-                <Menu-Item name='1-2' href="/home/plan/developmentplan">软件验证计划</Menu-Item>
-                <Menu-Item name='1-3'>软件质量保证计划</Menu-Item>
-                <Menu-Item name='1-4'>软件合格审定计划</Menu-Item>
-                <Menu-Item name='1-5'>配置管理计划</Menu-Item>
-                <Menu-Item name='1-6'>软件需求标准</Menu-Item>
-              </Submenu>
-              <Submenu name="2">
-                <template slot="title">
-                  <Icon type="ios-paper"></Icon>
-                  软件开发过程
-                </template>
-                <MenuGroup title="软件需求过程">
-                  <Menu-Item name='2-1'>软件开发计划</Menu-Item>
-                  <Menu-Item name='2-2'>软件验证计划</Menu-Item>
-                </MenuGroup>
-                <MenuGroup title="软件设计过程">
-                  <Menu-Item name='2-3'>软件开发计划</Menu-Item>
-                  <Menu-Item name='2-4'>软件验证计划</Menu-Item>
-                </MenuGroup>
-                <MenuGroup title="软件编码过程">
-                  <Menu-Item name='2-5'>软件开发计划</Menu-Item>
-                  <Menu-Item name='2-6'>软件验证计划</Menu-Item>
-                </MenuGroup>
-                <MenuGroup title="软件集成过程">
-                  <Menu-Item name='2-7'>软件开发计划</Menu-Item>
-                  <Menu-Item name='2-8'>软件验证计划</Menu-Item>
-                </MenuGroup>
-                
-              </Submenu>
-              <Submenu name="3">
-                <template slot="title">
-                  <Icon type="ios-albums"></Icon>
-                  软件综合过程
-                </template>
-                <MenuGroup title="软件验证过程">
-                  <Menu-Item name='3-1'>软件开发计划</Menu-Item>
-                  <Menu-Item name='3-2'>软件验证计划</Menu-Item>
-                </MenuGroup>
-                <MenuGroup title="软件配置管理过程">
-                  <Menu-Item name='3-3'>软件开发计划</Menu-Item>
-                  <Menu-Item name='3-4'>软件验证计划</Menu-Item>
-                </MenuGroup>
-                <MenuGroup title="软件质量保证过程">
-                  <Menu-Item name='3-5'>软件开发计划</Menu-Item>
-                  <Menu-Item name='3-6'>软件验证计划</Menu-Item>
-                </MenuGroup>
-                <MenuGroup title="软件联络审计过程">
-                  <Menu-Item name='3-7'>软件开发计划</Menu-Item>
-                  <Menu-Item name='3-8'>软件验证计划</Menu-Item>
-                </MenuGroup>
-              </Submenu>
-            </Menu>
-          </Col>
-        </Row>
-      </Sider> 
-      <div class="container">
-        <router-view></router-view>
-      </div>
-    </Layout> -->
-  <!-- </div> -->
-  <el-container>
+  <el-container class="outer">
     <!-- 顶部导航 -->
-    <el-header height="30px" class="header"></el-header>
+    <el-header height="50px" class="header"></el-header>
     <el-container>
       <!-- 侧边栏导航 -->
-      <el-aside width="200px" class="siderBar">Aside</el-aside>
+      <el-aside width="210px" class="siderBar">
+        <el-menu
+          :default-active="$route.path"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#ffd04b"
+          unique-opened
+          router>
+          <el-submenu index="/home/plan">
+            <template slot="title">
+              <i class="el-icon-tickets"></i>
+              <span>软件计划过程</span>
+            </template>
+            <el-menu-item index="/home/plan/developmentplan">软件开发计划</el-menu-item>
+            <el-menu-item index="/home/plan/verificationplan">软件验证计划</el-menu-item>
+            <el-menu-item index="1-3">选项3</el-menu-item>
+          </el-submenu>
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-document"></i>
+              <span>软件开发过程</span>
+            </template>
+            <el-menu-item index="2-1">选项1</el-menu-item>
+            <el-menu-item index="2-2">选项2</el-menu-item>
+            <el-menu-item index="2-3">选项3</el-menu-item>
+          </el-submenu>
+          <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>软件综合过程</span>
+            </template>
+            <el-menu-item index="3-1">选项1</el-menu-item>
+            <el-menu-item index="3-2">选项2</el-menu-item>
+            <el-menu-item index="3-3">选项3</el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </el-aside>
       <!-- 内容区域 -->
-      <el-main class="main-content"></el-main>
+      <el-main class="main-content">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -131,62 +71,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.menu-dark {
-  background-color: #1c2532;
-}
-.layout {
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-}
-.layout-con {
+.outer {
   height: 100%;
-  width:100%;
-}
-.layout-logo {
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-}
-.layout-nav {
-    width: 420px;
-    margin: 0 auto;
-    margin-right: 20px;
-}
-.main {
-  height: 100%;
-  overflow: auto;
-}
-.container {
-  width: 100%;
-}
-.layout-footer-center {
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  color: rgba(255,255,255,.7);
-}
-.footer {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  z-index: 900; 
 }
 .header {
   background-color: #1c2532;
 }
 .siderBar {
   background-color: #2f4050;
-  /* min-height: 100%; */
 }
 .main-content {
   background-color: #e6e9f2;
+  padding: 18px;
 }
+
 </style>

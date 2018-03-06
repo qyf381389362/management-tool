@@ -2,15 +2,15 @@
  * @Author: qinyufei 
  * @Date: 2018-03-04 21:31:14 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-04 22:18:09
+ * @Last Modified time: 2018-03-06 17:15:30
  */
 * {
   margin:0;
   padding:0;
 }
 .wrapper {
-  margin: 10px;
-  padding: 0 10px 10px;
+  margin: 0;
+  padding: 0;
 }
 .content {
   margin-top: 10px;
