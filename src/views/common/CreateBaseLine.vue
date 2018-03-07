@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-07 11:37:53 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-07 12:03:33
+ * @Last Modified time: 2018-03-07 20:55:30
  */
 <!--创建基线页面-->
 <template>
@@ -13,9 +13,23 @@
         <el-breadcrumb-item>创建基线</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
-        <el-form :model="form">
-          <el-form-item label="基线名称">
-            <el-input v-model="form.name"></el-input>
+        <el-form id="baselineForm" :model="form" label-width="80px">
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="基线名称">
+                <el-input v-model="form.name"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="基线标识">
+                <el-input v-model="form.identification"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-form-item label="基线说明">
+            <el-input type="textarea" v-model="form.instructions"></el-input>
           </el-form-item>
           <el-form-item label="状态" placeholder="请选择状态">
             <el-select v-model="form.state">
@@ -23,12 +37,31 @@
               <el-option label="审核中" value="审核中"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="基线标识">
-            <el-input v-model="form.identification"></el-input>
+          <el-row>
+            <el-col :span="3">
+              <el-form-item label="创建人">
+                <el-input v-model="form.creator"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="3" :offset="2">
+              <el-form-item label="创建时间">
+                <el-input v-model="form.creator"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-form-item label="审核人">
+            <el-input v-model="form.reviewer"></el-input>
           </el-form-item>
-          <el-fomr-ietm>
-            <el-input type=""></el-input>
-          </el-fomr-ietm>
+          <el-form-item label="发布内容">
+            <el-input type="textarea" v-model="form.publication"></el-input>
+          </el-form-item>
+          <el-form-item label="备注">
+            <el-input type="textarea" v-model="form.remarks"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">创建</el-button>
+            <el-button>取消</el-button>
+          </el-form-item>
         </el-form>
       </el-card>
     </el-main>
@@ -44,16 +77,26 @@ export default {
         state: '',
         identification: '',
         instructions: '',
-        reviewer: '',
         creator: '',
         createTime: '',
-        content: '',
+        reviewer: '',
+        publication: '',
         remarks: ''
       }
+    }
+  },
+  methods: {
+    onSubmit: function () {
+      console.log('submit')
     }
   }
 }
 </script>
 <style scoped>
-
+  /* .el-form-item {
+    width: 600px;
+  } */
+  .inline {
+    display: inline-block;
+  }
 </style>
