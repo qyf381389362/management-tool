@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-06 17:41:01
+ * @Last Modified time: 2018-03-07 11:48:27
  */
 
 <template>
@@ -11,7 +11,7 @@
     <el-header height="50px" class="header"></el-header>
     <el-container>
       <!-- 侧边栏导航 -->
-      <el-aside width="210px" class="siderBar">
+      <el-aside width="200px" class="siderBar">
         <el-menu
           :default-active="$route.path"
           background-color="#2f4050"
@@ -27,7 +27,7 @@
             </template>
             <el-menu-item index="/home/plan/developmentplan">软件开发计划</el-menu-item>
             <el-menu-item index="/home/plan/verificationplan">软件验证计划</el-menu-item>
-            <el-menu-item index="1-3">选项3</el-menu-item>
+            <el-menu-item index="/home/plan/createBaseLine">创建基线</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
@@ -80,6 +80,7 @@ export default {
 }
 .siderBar {
   background-color: #2f4050;
+  overflow-x: hidden;
 }
 .main-content {
   background-color: #e6e9f2;

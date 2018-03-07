@@ -2,13 +2,14 @@
  * @Author: qinyufei
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-04 21:31:44
+ * @Last Modified time: 2018-03-07 11:44:24
  */
 import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/views/HomePage'
 import DevelopmentPlan from '../views/Plan/SoftDevelopmentPlan'
 import VerificationPlan from '../views/Plan/SoftwareVerificationPlan'
+import CreateBaseLine from '../views/common/CreateBaseLine'
 
 Vue.use(Router)
 
@@ -39,6 +40,10 @@ export default new Router({
           path: 'plan/verificationplan',
           name: 'VerificationPlan',
           component: VerificationPlan
+        },
+        {
+          path: 'plan/createBaseLine',
+          component: CreateBaseLine
         }
       ]
     }
