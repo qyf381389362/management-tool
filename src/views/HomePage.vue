@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-06 17:19:50
+ * @Last Modified time: 2018-03-06 17:41:01
  */
 
 <template>
@@ -14,9 +14,10 @@
       <el-aside width="210px" class="siderBar">
         <el-menu
           :default-active="$route.path"
-          background-color="#545c64"
+          background-color="#2f4050"
           text-color="#fff"
           active-text-color="#ffd04b"
+          class="el-menu"
           unique-opened
           router>
           <el-submenu index="/home/plan">
@@ -84,5 +85,7 @@ export default {
   background-color: #e6e9f2;
   padding: 18px;
 }
-
+.el-menu {
+  width: 100%;
+}
 </style>

@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-02 19:15:53 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-06 17:28:50
+ * @Last Modified time: 2018-03-06 17:50:46
  */
 <!--软件计划过程之软件验证计划页面-->
 <template>
@@ -13,7 +13,7 @@
         <el-breadcrumb-item>软件验证计划</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
-        <div>马老师牛逼啊</div>
+        <div>软件验证计划</div>
       </el-card>
     </el-main>
   </el-container>
