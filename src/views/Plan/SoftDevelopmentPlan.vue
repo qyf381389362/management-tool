@@ -92,10 +92,10 @@ export default {
           period: '',
           state: '未审核',
           creater: '秦雨霏',
-          createTime : '2017-10-2',
+          createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
-        }, 
+        },
         {
           id: 2,
           name: '计划2',
@@ -103,10 +103,10 @@ export default {
           period: '',
           state: '未审核',
           creater: '秦雨霏',
-          createTime : '2017-10-2',
+          createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
-        }, 
+        },
         {
           id: 3,
           name: '计划3',
@@ -114,10 +114,10 @@ export default {
           period: '',
           state: '未审核',
           creater: '秦雨霏',
-          createTime : '2017-10-2',
+          createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
-        }, 
+        },
         {
           id: 4,
           name: '计划4',
@@ -125,7 +125,7 @@ export default {
           period: '',
           state: '未审核',
           creater: '秦雨霏',
-          createTime : '2017-10-2',
+          createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
         },
@@ -136,10 +136,10 @@ export default {
           period: '',
           state: '未审核',
           creater: '秦雨霏',
-          createTime : '2017-10-2',
+          createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
-        } 
+        }
       ]
     }
   }
