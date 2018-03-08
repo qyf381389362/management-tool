@@ -84,6 +84,7 @@ export default {
   name: 'DevelopmentPlan',
   data () {
     return {
+      form: {},
       tableData: [
         {
           id: 1,

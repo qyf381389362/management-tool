@@ -2,7 +2,7 @@
  * @Author: qinyufei
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-07 11:44:24
+ * @Last Modified time: 2018-03-08 10:47:55
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -17,7 +17,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HomePage',
       component: HomePage
     },
     {
