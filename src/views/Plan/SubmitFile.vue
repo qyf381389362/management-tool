@@ -1,16 +1,18 @@
 /*
  * @Author: qinyufei 
- * @Date: 2018-03-07 11:37:53 
+ * @Date: 2018-03-08 17:37:37 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-08 17:46:31
+ * @Last Modified time: 2018-03-08 17:53:53
  */
-<!--创建基线页面-->
+
+<!--软件计划过程之上传文件-->
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
         <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
-        <el-breadcrumb-item>创建基线</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/home/plan/developmentplan'}">软件开发计划</el-breadcrumb-item>
+        <el-breadcrumb-item>上传文件</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <el-form id="baselineForm" :model="form" label-width="80px" class="formMargin">
@@ -89,29 +91,71 @@
 </template>
 <script>
 export default {
-  name: 'CreateBaseLine',
+  name: 'SubmitFile',
   data () {
     return {
-      form: {
-        name: '',
-        state: '',
-        identification: '',
-        instructions: '',
-        creator: '',
-        createTime: '',
-        reviewer: '',
-        publication: '',
-        remarks: ''
-      }
-    }
-  },
-  methods: {
-    onSubmit: function () {
-      console.log('submit')
+      form: {},
+      tableData: [
+        {
+          id: 1,
+          name: '计划1',
+          version: '1.0.4',
+          period: '',
+          state: '未审核',
+          creater: '秦雨霏',
+          createTime: '2017-10-2',
+          editor: '许文静',
+          editTime: '2017-10-3'
+        },
+        {
+          id: 2,
+          name: '计划2',
+          version: '1.0.3',
+          period: '',
+          state: '未审核',
+          creater: '秦雨霏',
+          createTime: '2017-10-2',
+          editor: '许文静',
+          editTime: '2017-10-3'
+        },
+        {
+          id: 3,
+          name: '计划3',
+          version: '1.0.2',
+          period: '',
+          state: '未审核',
+          creater: '秦雨霏',
+          createTime: '2017-10-2',
+          editor: '许文静',
+          editTime: '2017-10-3'
+        },
+        {
+          id: 4,
+          name: '计划4',
+          version: '1.0.1',
+          period: '',
+          state: '未审核',
+          creater: '秦雨霏',
+          createTime: '2017-10-2',
+          editor: '许文静',
+          editTime: '2017-10-3'
+        },
+        {
+          id: 5,
+          name: '计划5',
+          version: '1.0.0',
+          period: '',
+          state: '未审核',
+          creater: '秦雨霏',
+          createTime: '2017-10-2',
+          editor: '许文静',
+          editTime: '2017-10-3'
+        }
+      ]
     }
   }
 }
 </script>
 <style scoped>
-  
+
 </style>

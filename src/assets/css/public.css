@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-04 21:31:14 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-06 17:36:37
+ * @Last Modified time: 2018-03-08 17:46:26
  */
 * {
   margin:0;
@@ -13,12 +13,21 @@
   padding: 0;
 }
 .content {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
   height: auto;
   min-height: 800px;
 }
 .breadcrumb {
   font-size: 16px;
+}
+.formMargin {
+  margin: 20px;
+}
+.inline {
+  display: inline-block;
+}
+.buttonGroup {
+  margin-top: 40px;
 }
 

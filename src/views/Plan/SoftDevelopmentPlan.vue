@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-06 20:58:07
+ * @Last Modified time: 2018-03-08 17:50:30
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -17,7 +17,11 @@
           <el-row>
             <el-col :span="3">
               <el-form-item>
-              <el-button type="primary" round>上传文件</el-button>
+              <el-button type="primary" 
+                         @click="submitFile()"
+                         round>
+                          上传文件
+              </el-button>
               </el-form-item>
             </el-col>
             <el-col :span="3" :offset="18">
@@ -142,6 +146,11 @@ export default {
           editTime: '2017-10-3'
         }
       ]
+    }
+  },
+  methods: {
+    submitFile: function () {
+      this.$router.go('/home/plan/developmentplan/submitFile')
     }
   }
 }
