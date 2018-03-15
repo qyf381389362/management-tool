@@ -1,19 +1,20 @@
 /*
- * @Author: qinyufei 
- * @Date: 2018-03-07 11:37:53 
+ * @Author: 秦雨霏 
+ * @Date: 2018-03-15 14:06:00 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-03-15 14:41:24
+ * @Last Modified time: 2018-03-15 14:39:42
  */
-<!--创建基线页面-->
+
+<!--审核基线页面-->
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
         <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
-        <el-breadcrumb-item>创建基线</el-breadcrumb-item>
+        <el-breadcrumb-item>审核基线</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
-        <el-form id="baselineForm" :model="form" label-width="80px" class="formMargin">
+        <el-form id="baselineForm" :model="form" label-width="100px" class="formMargin">
           <el-row>
             <el-col :span="8">
               <el-form-item label="基线名称">
@@ -46,25 +47,9 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="3">
+            <el-col :span="8">
               <el-form-item label="创建人">
                 <el-input v-model="form.creator"></el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="1">
-              <el-form-item label="创建时间">
-                <el-date-picker
-                  v-model="form.createTime"
-                  type="date"
-                  placeholder="请选择时间">
-                </el-date-picker>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="8">
-              <el-form-item label="审核人">
-                <el-input v-model="form.reviewer"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -72,6 +57,42 @@
             <el-col :span="8">
               <el-form-item label="发布内容">
                 <el-input type="textarea" v-model="form.publication"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="基线审核标识">
+                <el-input v-model="form.checkIdentification"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="审核意见">
+                <el-input type="textarea" v-model="form.checkComments"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="3">
+              <el-form-item label="审核人">
+                <el-input v-model="form.reviewer"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="3" :offset="2">
+              <el-form-item label="审核时间">
+                <el-input v-model="form.reviewTime"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="基线发布时间">
+                <el-date-picker
+                  v-model="form.checkTime"
+                  type="date"
+                  placeholder="选择日期"></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
@@ -93,7 +114,7 @@
 </template>
 <script>
 export default {
-  name: 'CreateBaseLine',
+  name: 'CheckBaseLine',
   data () {
     return {
       form: {

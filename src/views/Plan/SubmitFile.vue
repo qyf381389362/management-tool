@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-08 17:37:37 
- * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-08 17:53:53
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2018-03-15 13:53:25
  */
 
 <!--软件计划过程之上传文件-->
@@ -18,22 +18,22 @@
         <el-form id="baselineForm" :model="form" label-width="80px" class="formMargin">
           <el-row>
             <el-col :span="8">
-              <el-form-item label="基线名称">
+              <el-form-item label="标识">
+                <el-input v-model="form.id"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="名称">
                 <el-input v-model="form.name"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="8">
-              <el-form-item label="基线标识">
-                <el-input v-model="form.identification"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="8">
-              <el-form-item label="基线说明">
-                <el-input type="textarea" v-model="form.instructions"></el-input>
+              <el-form-item label="当前版本">
+                <el-input v-model="form.version"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -60,16 +60,14 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="8">
-              <el-form-item label="审核人">
-                <el-input v-model="form.reviewer"></el-input>
+            <el-col :span="3">
+              <el-form-item label="编辑人">
+                <el-input v-model="form.editor"></el-input>
               </el-form-item>
             </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="8">
-              <el-form-item label="发布内容">
-                <el-input type="textarea" v-model="form.publication"></el-input>
+            <el-col :span="3" :offset="2">
+              <el-form-item label="编辑时间">
+                <el-input v-model="form.editTime"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -94,64 +92,7 @@ export default {
   name: 'SubmitFile',
   data () {
     return {
-      form: {},
-      tableData: [
-        {
-          id: 1,
-          name: '计划1',
-          version: '1.0.4',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 2,
-          name: '计划2',
-          version: '1.0.3',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 3,
-          name: '计划3',
-          version: '1.0.2',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 4,
-          name: '计划4',
-          version: '1.0.1',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 5,
-          name: '计划5',
-          version: '1.0.0',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        }
-      ]
+      form: {}
     }
   }
 }

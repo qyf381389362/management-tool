@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:03 
- * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-07 11:48:27
+ * @Last Modified by: 秦雨霏
+ * @Last Modified time: 2018-03-15 14:48:13
  */
 
 <template>
@@ -28,6 +28,7 @@
             <el-menu-item index="/home/plan/developmentplan">软件开发计划</el-menu-item>
             <el-menu-item index="/home/plan/verificationplan">软件验证计划</el-menu-item>
             <el-menu-item index="/home/plan/createBaseLine">创建基线</el-menu-item>
+            <el-menu-item index="/home/plan/checkBaseLine">审核基线</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
@@ -36,7 +37,7 @@
             </template>
             <el-menu-item index="2-1">选项1</el-menu-item>
             <el-menu-item index="2-2">选项2</el-menu-item>
-            <el-menu-item index="2-3">选项3</el-menu-item>
+            <el-menu-item index="/home/plan/problemReport">问题报告</el-menu-item>
           </el-submenu>
           <el-submenu index="3">
             <template slot="title">
