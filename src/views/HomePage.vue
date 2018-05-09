@@ -1,14 +1,27 @@
 /*
- * @Author: qinyufei 
+ * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-03-15 14:48:13
+ * @Last Modified time: 2018-05-09 20:02:36
  */
 
 <template>
   <el-container class="outer">
     <!-- 顶部导航 -->
-    <el-header height="50px" class="header"></el-header>
+    <el-header height="50px" class="header">
+      <!-- <div class="logo"></div> -->
+      <el-menu
+        :default-active="activeIndex"
+        mode="horizontal"
+        class="topMenu"
+        background-color="#1c2532"
+        text-color="#fff"
+        active-text-color="#ffd04b">
+        <el-menu-item class="menuItem" index="1">个人信息</el-menu-item>
+        <el-menu-item class="menuItem" index="2">项目列表</el-menu-item>
+        <el-menu-item class="menuItem" index="3">退出</el-menu-item>
+      </el-menu>
+    </el-header>
     <el-container>
       <!-- 侧边栏导航 -->
       <el-aside width="200px" class="siderBar">
@@ -65,7 +78,8 @@ export default {
   },
   data () {
     return {
-      asideBar: []
+      asideBar: [],
+      activeIndex: '1'
     }
   }
 }
@@ -75,6 +89,17 @@ export default {
 <style scoped>
 .outer {
   height: 100%;
+}
+.logo{
+  width: 100px;
+  height: 30px;
+  background: #5b6270;
+  border-radius: 3px;
+  display: inline-block;
+  /* float: left; */
+  /* position: relative; */
+  top: 15px;
+  left: 20px;
 }
 .header {
   background-color: #1c2532;
@@ -89,5 +114,16 @@ export default {
 }
 .el-menu {
   width: 100%;
+}
+.topMenu {
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+}
+.menuItem {
+  height: 50px;
+}
+.menuItem .submenu__title {
+  height: 50px;
 }
 </style>
