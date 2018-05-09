@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-07 11:37:53 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-03-15 14:41:24
+ * @Last Modified time: 2018-05-10 04:45:01
  */
 <!--创建基线页面-->
 <template>
@@ -83,7 +83,7 @@
             </el-col>
           </el-row>
           <el-form-item class="buttonGroup">
-            <el-button type="primary" @click="onSubmit">创建</el-button>
+            <el-button type="primary" @click="onSubmit">创建并提交审核</el-button>
             <el-button>取消</el-button>
           </el-form-item>
         </el-form>

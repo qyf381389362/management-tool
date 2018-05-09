@@ -1,16 +1,16 @@
 /*
  * @Author: 秦雨霏 
- * @Date: 2018-03-02 16:32:50 
+ * @Date: 2018-05-10 04:07:47 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:32:41
+ * @Last Modified time: 2018-05-10 04:42:55
  */
-<!--软件计划过程之软件开发计划页面-->
+
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
         <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
-        <el-breadcrumb-item>软件开发计划</el-breadcrumb-item>
+        <el-breadcrumb-item>软件设计标准</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <el-form :model="form">
@@ -103,66 +103,11 @@
 </template>
 <script>
 export default {
-  name: 'DevelopmentPlan',
+  name: 'DesignStandard',
   data () {
     return {
       form: {},
       tableData: [
-        {
-          id: 'SDP-1',
-          name: '软件开发计划1',
-          version: '1.0.4',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-2',
-          name: '软件开发计划2',
-          version: '1.0.3',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-3',
-          name: '软件开发计划3',
-          version: '1.0.2',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-4',
-          name: '软件开发计划4',
-          version: '1.0.1',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-5',
-          name: '软件开发计划5',
-          version: '1.0.0',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        }
       ]
     }
   },

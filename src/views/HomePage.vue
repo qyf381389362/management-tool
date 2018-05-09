@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-09 20:02:36
+ * @Last Modified time: 2018-05-10 04:49:15
  */
 
 <template>
@@ -17,7 +17,7 @@
         background-color="#1c2532"
         text-color="#fff"
         active-text-color="#ffd04b">
-        <el-menu-item class="menuItem" index="1">个人信息</el-menu-item>
+        <el-menu-item class="menuItem" index="1">基线</el-menu-item>
         <el-menu-item class="menuItem" index="2">项目列表</el-menu-item>
         <el-menu-item class="menuItem" index="3">退出</el-menu-item>
       </el-menu>
@@ -40,6 +40,12 @@
             </template>
             <el-menu-item index="/home/plan/developmentplan">软件开发计划</el-menu-item>
             <el-menu-item index="/home/plan/verificationplan">软件验证计划</el-menu-item>
+            <el-menu-item index="/home/plan/certificationplan">软件合格审定计划</el-menu-item>
+            <el-menu-item index="/home/plan/QAplan">软件质量保证计划</el-menu-item>
+            <el-menu-item index="/home/plan/SCMplan">软件配置管理计划</el-menu-item>
+            <el-menu-item index="/home/plan/demandStandard">软件需求标准</el-menu-item>
+            <el-menu-item index="/home/plan/designStandard">软件设计标准</el-menu-item>
+            <el-menu-item index="/home/plan/codingStandard">软件编码标准</el-menu-item>
             <el-menu-item index="/home/plan/createBaseLine">创建基线</el-menu-item>
             <el-menu-item index="/home/plan/checkBaseLine">审核基线</el-menu-item>
           </el-submenu>
@@ -48,8 +54,8 @@
               <i class="el-icon-document"></i>
               <span>软件开发过程</span>
             </template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
+            <el-menu-item index="2-1">高层需求</el-menu-item>
+            <el-menu-item index="2-2">低层需求</el-menu-item>
             <el-menu-item index="/home/plan/problemReport">问题报告</el-menu-item>
           </el-submenu>
           <el-submenu index="3">
@@ -79,7 +85,7 @@ export default {
   data () {
     return {
       asideBar: [],
-      activeIndex: '1'
+      activeIndex: ''
     }
   }
 }

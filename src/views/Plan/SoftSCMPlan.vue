@@ -1,16 +1,16 @@
 /*
  * @Author: 秦雨霏 
- * @Date: 2018-03-02 16:32:50 
+ * @Date: 2018-05-10 04:00:16 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:32:41
+ * @Last Modified time: 2018-05-10 04:39:13
  */
-<!--软件计划过程之软件开发计划页面-->
+
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
         <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
-        <el-breadcrumb-item>软件开发计划</el-breadcrumb-item>
+        <el-breadcrumb-item>软件配置管理计划</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <el-form :model="form">
@@ -103,62 +103,29 @@
 </template>
 <script>
 export default {
-  name: 'DevelopmentPlan',
+  name: 'VerificationPlan',
   data () {
     return {
       form: {},
       tableData: [
         {
-          id: 'SDP-1',
-          name: '软件开发计划1',
+          id: 'SCMP-1',
+          name: '软件配置管理计划1',
           version: '1.0.4',
           period: '',
           state: '未审核',
-          creater: '秦雨霏',
+          creater: '王磊',
           createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
         },
         {
-          id: 'SDP-2',
-          name: '软件开发计划2',
+          id: 'SCMP-2',
+          name: '软件配置管理计划2',
           version: '1.0.3',
           period: '',
           state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-3',
-          name: '软件开发计划3',
-          version: '1.0.2',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-4',
-          name: '软件开发计划4',
-          version: '1.0.1',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-5',
-          name: '软件开发计划5',
-          version: '1.0.0',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
+          creater: '王磊',
           createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'

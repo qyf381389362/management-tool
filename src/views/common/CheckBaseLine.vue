@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-15 14:06:00 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-03-15 14:39:42
+ * @Last Modified time: 2018-05-10 04:45:43
  */
 
 <!--审核基线页面-->
@@ -104,8 +104,8 @@
             </el-col>
           </el-row>
           <el-form-item class="buttonGroup">
-            <el-button type="primary" @click="onSubmit">创建</el-button>
-            <el-button>取消</el-button>
+            <el-button type="primary" @click="onSubmit">审核通过</el-button>
+            <el-button>审核拒绝</el-button>
           </el-form-item>
         </el-form>
       </el-card>
