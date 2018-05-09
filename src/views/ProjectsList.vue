@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-09 20:08:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-09 22:45:49
+ * @Last Modified time: 2018-05-10 00:30:27
  */
 <!--项目列表和新建项目页面-->
 <template>
@@ -17,16 +17,16 @@
       <!-- 侧边栏导航 -->
       <el-aside width="30%" class="siderBar">
         <div class="newProject">
-          <div style="width:300px;">
+          <div>
             <font-awesome-icon class="add_icon" :icon="['fas', 'plus']"/>
           </div>
-          <p>点击此处新建一个项目</p>
+          <p class="add_text">点击此处新建一个项目</p>
         </div>
       </el-aside>
       <!-- 内容区域 -->
       <el-main class="main-content">
         <div class="projectsList">
-
+          
         </div>
       </el-main>
     </el-container>
@@ -87,8 +87,13 @@ export default {
   flex-wrap: wrap;
 }
 .add_icon {
+  width: 300px;
+  margin-top: 100px;
   color: #409EFF;
   font-size: 70px;
   display: block;
+}
+.add_text {
+  margin-top: -180px;
 }
 </style>
