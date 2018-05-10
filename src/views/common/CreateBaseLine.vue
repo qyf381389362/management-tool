@@ -2,7 +2,7 @@
  * @Author: qinyufei 
  * @Date: 2018-03-07 11:37:53 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:45:01
+ * @Last Modified time: 2018-05-10 07:58:32
  */
 <!--创建基线页面-->
 <template>
@@ -79,6 +79,21 @@
             <el-col :span="8">
               <el-form-item label="备注">
                 <el-input type="textarea" v-model="form.remarks"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="10">
+              <el-form-item label="上传附件">
+                <el-upload
+                  class="upload-demo"
+                  drag
+                  action=""
+                  multiple>
+                  <i class="el-icon-upload"></i>
+                  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                  <div class="el-upload__tip" slot="tip">只能上传pdf文件，且不超过50M</div>
+                </el-upload>
               </el-form-item>
             </el-col>
           </el-row>

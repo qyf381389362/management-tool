@@ -2,7 +2,7 @@
  * @Author: qinyufei
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:20:38
+ * @Last Modified time: 2018-05-10 11:02:39
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -19,8 +19,15 @@ import CodingStandard from '../views/Plan/SoftCodingStandard'
 import DemandStandard from '../views/Plan/SoftDemandStandard'
 import CreateBaseLine from '../views/common/CreateBaseLine'
 import CheckBaseLine from '../views/common/CheckBaseLine'
+import BaseLineList from '../views/common/BaseLineList'
 import SubmitFile from '../views/Plan/SubmitFile'
 import ProblemReport from '../views/common/ProblemReport'
+import SystemRequirements from '../views/Develop/SystemRequirements'
+import AddSystemRequirement from '../views/Develop/AddSystemRequirement'
+import HighLevelRequirements from '../views/Develop/HighLevelRequirements'
+import AddHighLevelRequirement from '../views/Develop/AddHighLevelRequirement'
+import LowLevelRequirements from '../views/Develop/LowLevelRequirements'
+import AddLowLevelRequirement from '../views/Develop/AddLowLevelRequirement'
 
 Vue.use(Router)
 
@@ -95,12 +102,52 @@ export default new Router({
           component: CreateBaseLine
         },
         {
-          path: 'plan/checkBaseLine',
+          path: 'checkBaseLine',
           component: CheckBaseLine
         },
         {
           path: 'plan/problemReport',
           component: ProblemReport
+        },
+        {
+          path: 'baseLineList',
+          name: 'BaseLineList',
+          component: BaseLineList
+        },
+        {
+          path: 'develop',
+          name: 'Develop',
+          component: SystemRequirements
+        },
+        {
+          path: 'develop/systemRequirements',
+          name: 'SystemRequirements',
+          component: SystemRequirements
+        },
+        {
+          path: 'develop/addSystemRequirement',
+          name: 'AddSystemRequirement',
+          component: AddSystemRequirement
+        },
+        {
+          path: 'develop/highLevelRequirements',
+          name: 'HighLevelRequirements',
+          component: HighLevelRequirements
+        },
+        {
+          path: 'develop/addHighLevelRequirement',
+          name: 'AddHighLevelRequirement',
+          component: AddHighLevelRequirement
+        },
+        {
+          path: 'develop/lowLevelRequirements',
+          name: 'LowLevelRequirements',
+          component: LowLevelRequirements
+        },
+        {
+          path: 'develop/addLowLevelRequirement',
+          name: 'AddLowLevelRequirement',
+          component: AddLowLevelRequirement
         }
       ]
     }

@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:49:15
+ * @Last Modified time: 2018-05-10 11:11:08
  */
 
 <template>
@@ -11,13 +11,18 @@
     <el-header height="50px" class="header">
       <!-- <div class="logo"></div> -->
       <el-menu
-        :default-active="activeIndex"
+        :default-active="$route.path"
         mode="horizontal"
         class="topMenu"
         background-color="#1c2532"
         text-color="#fff"
-        active-text-color="#ffd04b">
-        <el-menu-item class="menuItem" index="1">基线</el-menu-item>
+        active-text-color="#ffd04b"
+        router>
+        <el-submenu class="menuItem" index="1">
+          <template slot="title">基线</template>
+          <el-menu-item index="/home/plan/createBaseLine">创建基线</el-menu-item>
+          <el-menu-item index="/home/baseLineList">基线列表</el-menu-item>
+        </el-submenu>
         <el-menu-item class="menuItem" index="2">项目列表</el-menu-item>
         <el-menu-item class="menuItem" index="3">退出</el-menu-item>
       </el-menu>
@@ -46,26 +51,29 @@
             <el-menu-item index="/home/plan/demandStandard">软件需求标准</el-menu-item>
             <el-menu-item index="/home/plan/designStandard">软件设计标准</el-menu-item>
             <el-menu-item index="/home/plan/codingStandard">软件编码标准</el-menu-item>
-            <el-menu-item index="/home/plan/createBaseLine">创建基线</el-menu-item>
-            <el-menu-item index="/home/plan/checkBaseLine">审核基线</el-menu-item>
           </el-submenu>
-          <el-submenu index="2">
+          <el-submenu
+            index="/home/develop"
+            :disabled='isPlanCompleted'>
             <template slot="title">
               <i class="el-icon-document"></i>
               <span>软件开发过程</span>
             </template>
-            <el-menu-item index="2-1">高层需求</el-menu-item>
-            <el-menu-item index="2-2">低层需求</el-menu-item>
+            <el-menu-item index="/home/develop/systemRequirements">系统需求</el-menu-item>
+            <el-menu-item index="/home/develop/highLevelRequirements">高层需求</el-menu-item>
+            <el-menu-item index="/home/develop/lowLevelRequirements">低层需求</el-menu-item>
+            <el-menu-item index="/home/develop/highLevelRequirements">软件架构</el-menu-item>
+            <el-menu-item index="/home/develop/highLevelRequirements">软件编码</el-menu-item>
             <el-menu-item index="/home/plan/problemReport">问题报告</el-menu-item>
           </el-submenu>
-          <el-submenu index="3">
+          <el-submenu
+            index="3"
+            :disabled='isDevCompleted'>
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>软件综合过程</span>
             </template>
-            <el-menu-item index="3-1">选项1</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-            <el-menu-item index="3-3">选项3</el-menu-item>
+            <el-menu-item index="3-1">软件集成</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -85,7 +93,9 @@ export default {
   data () {
     return {
       asideBar: [],
-      activeIndex: ''
+      activeIndex: '',
+      isPlanCompleted: false,
+      isDevCompleted: false
     }
   }
 }

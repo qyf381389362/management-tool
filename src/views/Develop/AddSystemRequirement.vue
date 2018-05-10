@@ -2,17 +2,17 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-08 17:37:37 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 07:58:11
+ * @Last Modified time: 2018-05-10 09:40:02
  */
 
-<!--软件计划过程之上传文件-->
+<!--软件开发过程之添加系统需求-->
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
-        <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/home/plan/developmentplan'}">软件开发计划</el-breadcrumb-item>
-        <el-breadcrumb-item>上传计划</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/home/plan'}">软件开发过程</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/home/plan/developmentplan'}">系统需求</el-breadcrumb-item>
+        <el-breadcrumb-item>添加系统需求</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <el-form id="baselineForm" :model="form" label-width="80px" class="formMargin">
@@ -106,7 +106,7 @@
             </el-col>
           </el-row>
           <el-form-item class="buttonGroup">
-            <el-button type="primary" @click="onSubmit">上传</el-button>
+            <el-button type="primary" @click="onSubmit">添加</el-button>
             <el-button @click="cancle">取消</el-button>
           </el-form-item>
         </el-form>
@@ -116,7 +116,7 @@
 </template>
 <script>
 export default {
-  name: 'SubmitFile',
+  name: 'AddSystemRequirement',
   data () {
     return {
       form: {}
@@ -124,9 +124,10 @@ export default {
   },
   methods: {
     onSubmit () {
+      this.$router.push({name: 'SystemRequirements'})
     },
     cancle () {
-      this.$router.push({name: 'DevelopmentPlan'})
+      this.$router.push({name: 'SystemRequirements'})
     }
   }
 }

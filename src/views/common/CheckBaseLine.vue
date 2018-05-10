@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-15 14:06:00 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:45:43
+ * @Last Modified time: 2018-05-10 08:05:56
  */
 
 <!--审核基线页面-->
@@ -10,7 +10,6 @@
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
-        <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
         <el-breadcrumb-item>审核基线</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
@@ -82,17 +81,17 @@
             </el-col>
             <el-col :span="3" :offset="2">
               <el-form-item label="审核时间">
-                <el-input v-model="form.reviewTime"></el-input>
+                <el-date-picker
+                  v-model="form.checkTime"
+                  type="date"
+                  placeholder="选择日期"></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="8">
               <el-form-item label="基线发布时间">
-                <el-date-picker
-                  v-model="form.checkTime"
-                  type="date"
-                  placeholder="选择日期"></el-date-picker>
+                <el-input v-model="form.releaseTime"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -103,9 +102,16 @@
               </el-form-item>
             </el-col>
           </el-row>
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="附件">
+                <el-input type="file" v-model="form.appendix"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
           <el-form-item class="buttonGroup">
             <el-button type="primary" @click="onSubmit">审核通过</el-button>
-            <el-button>审核拒绝</el-button>
+            <el-button @click="refuse">审核拒绝</el-button>
           </el-form-item>
         </el-form>
       </el-card>
@@ -126,13 +132,17 @@ export default {
         createTime: '',
         reviewer: '',
         publication: '',
-        remarks: ''
+        remarks: '',
+        appendix: ''
       }
     }
   },
   methods: {
     onSubmit: function () {
-      console.log('submit')
+      this.$router.push({path: '/home/baseLineList'})
+    },
+    refuse () {
+      this.$router.push({path: '/home/baseLineList'})
     }
   }
 }

@@ -1,18 +1,18 @@
 /*
- * @Author: 秦雨霏
- * @Date: 2018-03-08 17:37:37 
+ * @Author: 秦雨霏 
+ * @Date: 2018-05-10 10:07:39 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 07:58:11
+ * @Last Modified time: 2018-05-10 10:54:43
  */
 
-<!--软件计划过程之上传文件-->
+<!--新增高层需求页面-->
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
-        <el-breadcrumb-item :to="{path:'/home/plan'}">软件计划过程</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path:'/home/plan/developmentplan'}">软件开发计划</el-breadcrumb-item>
-        <el-breadcrumb-item>上传计划</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/home/develop'}">软件开发过程</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/home/develop/highLevelRequirements'}">高层需求</el-breadcrumb-item>
+        <el-breadcrumb-item>添加高层需求</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <el-form id="baselineForm" :model="form" label-width="80px" class="formMargin">
@@ -34,16 +34,6 @@
             <el-col :span="10">
               <el-form-item label="当前版本">
                 <el-input v-model="form.version"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="10">
-              <el-form-item label="状态" placeholder="请选择状态">
-                <el-select v-model="form.state">
-                  <el-option label="待审核" value="待审核"></el-option>
-                  <el-option label="审核中" value="审核中"></el-option>
-                </el-select>
               </el-form-item>
             </el-col>
           </el-row>
@@ -84,6 +74,18 @@
             </el-col>
           </el-row>
           <el-row>
+            <el-col :span="12">
+              <el-form-item label="数据追踪">
+                <el-transfer
+                  filterable
+                  v-model="dataTracking"
+                  :data="data"
+                  :titles="['待追踪系统需求', '追踪项']">
+                </el-transfer>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
             <el-col :span="10">
               <el-form-item label="备注">
                 <el-input type="textarea" v-model="form.remarks"></el-input>
@@ -106,7 +108,7 @@
             </el-col>
           </el-row>
           <el-form-item class="buttonGroup">
-            <el-button type="primary" @click="onSubmit">上传</el-button>
+            <el-button type="primary" @click="onSubmit">添加</el-button>
             <el-button @click="cancle">取消</el-button>
           </el-form-item>
         </el-form>
@@ -116,17 +118,31 @@
 </template>
 <script>
 export default {
-  name: 'SubmitFile',
+  name: 'AddSystemRequirement',
   data () {
+    const generateData = _ => {
+      const data = []
+      for (let i = 1; i <= 15; i++) {
+        data.push({
+          key: i,
+          label: `备选项 ${i}`,
+          disabled: i % 4 === 0
+        })
+      }
+      return data
+    }
     return {
-      form: {}
+      form: {},
+      data: generateData(),
+      dataTracking: []
     }
   },
   methods: {
     onSubmit () {
+      this.$router.push({name: 'HighLevelRequirements'})
     },
     cancle () {
-      this.$router.push({name: 'DevelopmentPlan'})
+      this.$router.push({name: 'HighLevelRequirements'})
     }
   }
 }
