@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 10:52:20 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 11:04:02
+ * @Last Modified time: 2018-05-10 11:21:00
  */
 
 <!--低层需求页面-->
@@ -63,10 +63,6 @@
             label="当前版本">
           </el-table-column>
           <el-table-column
-            prop="period"
-            label="阶段">
-          </el-table-column>
-          <el-table-column
             prop="state"
             label="状态">
           </el-table-column>
@@ -85,6 +81,10 @@
           <el-table-column
             prop="editTime"
             label="编辑时间">
+          </el-table-column>
+          <el-table-column
+            prop="tracking"
+            label="追踪">
           </el-table-column>
           <el-table-column
             label="操作"

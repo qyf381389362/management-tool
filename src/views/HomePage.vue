@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 11:11:08
+ * @Last Modified time: 2018-05-10 13:13:52
  */
 
 <template>
@@ -23,8 +23,13 @@
           <el-menu-item index="/home/plan/createBaseLine">创建基线</el-menu-item>
           <el-menu-item index="/home/baseLineList">基线列表</el-menu-item>
         </el-submenu>
-        <el-menu-item class="menuItem" index="2">项目列表</el-menu-item>
-        <el-menu-item class="menuItem" index="3">退出</el-menu-item>
+        <el-menu-item class="menuItem" index="/projects">项目列表</el-menu-item>
+        <el-submenu class="menuItem" index="2">
+          <template slot="title">我的</template>
+          <el-menu-item index="/home/myCheckList">我的核查</el-menu-item>
+          <el-menu-item index="/home/baseLineList">我的评审</el-menu-item>
+        </el-submenu>
+        <el-menu-item class="menuItem" index="/">退出</el-menu-item>
       </el-menu>
     </el-header>
     <el-container>
@@ -62,8 +67,8 @@
             <el-menu-item index="/home/develop/systemRequirements">系统需求</el-menu-item>
             <el-menu-item index="/home/develop/highLevelRequirements">高层需求</el-menu-item>
             <el-menu-item index="/home/develop/lowLevelRequirements">低层需求</el-menu-item>
-            <el-menu-item index="/home/develop/highLevelRequirements">软件架构</el-menu-item>
-            <el-menu-item index="/home/develop/highLevelRequirements">软件编码</el-menu-item>
+            <el-menu-item index="/home/develop/softwareStructure">软件架构</el-menu-item>
+            <el-menu-item index="/home/develop/softwareCoding">软件编码</el-menu-item>
             <el-menu-item index="/home/plan/problemReport">问题报告</el-menu-item>
           </el-submenu>
           <el-submenu

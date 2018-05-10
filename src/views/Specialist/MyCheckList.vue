@@ -1,38 +1,25 @@
 /*
  * @Author: 秦雨霏 
- * @Date: 2018-05-10 08:21:15 
+ * @Date: 2018-05-10 13:10:20 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 12:44:47
+ * @Last Modified time: 2018-05-10 13:31:46
  */
 
-<!--软件编码页面-->
+<!--我的核查页面-->
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
-        <el-breadcrumb-item :to="{path:'/home/develop'}">软件开发过程</el-breadcrumb-item>
-        <el-breadcrumb-item>软件编码</el-breadcrumb-item>
+        <el-breadcrumb-item>我的核查</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <el-form :model="form">
           <el-row :gutter="20">
             <el-col :span="3">
               <el-form-item>
-              <el-button
-                type="primary" 
-                @click="addCode"
-                round>
-                添加源代码
-              </el-button>
-              </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="13">
-              <el-form-item>
-                <el-select placeholder="请选择版本">
-                  <el-option label="1.0.0" value="1"></el-option>
-                  <el-option label="1.0.1" value="2"></el-option>
-                  <el-option label="1.0.2" value="3"></el-option>
-                  <el-option label="1.0.3" value="4"></el-option>
+                <el-select placeholder="请选择状态">
+                  <el-option label="待核查" value="1"></el-option>
+                  <el-option label="已完成" value="2"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
@@ -94,15 +81,7 @@
             <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button
-                  size="mini"
-                  type="primary"
-                  @click="handleCheck(scope.$index, scope.row)">审核</el-button>
-                <el-button
-                  size="mini"
-                  type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                  @click="handleEdit(scope.$index, scope.row)">核查</el-button>
               </template>
           </el-table-column>
         </el-table>
@@ -148,7 +127,7 @@
 </template>
 <script>
 export default {
-  name: 'SoftwareCoding',
+  name: 'MyCheckList',
   data () {
     return {
       form: {
@@ -160,83 +139,34 @@ export default {
       formLabelWidth: '120px',
       tableData: [
         {
-          id: 'code-1',
-          name: '源码1',
+          id: 'HLD-1',
+          name: '高层需求1',
           version: '1.0.0',
           period: '',
-          state: '未审核',
+          state: '待核查',
           creater: '秦雨霏',
           createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
         },
         {
-          id: 'code-2',
-          name: '源码2',
-          version: '1.0.1',
+          id: 'LLD-2',
+          name: '低层需求2',
+          version: '1.0.0',
           period: '',
-          state: '未审核',
+          state: '已完成',
           creater: '秦雨霏',
-          createTime: '2017-10-2',
+          createTime: '2018-5-2',
           editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'code-3',
-          name: '源码3',
-          version: '1.0.2',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'code-4',
-          name: '源码4',
-          version: '1.0.3',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'code-5',
-          name: '源码5',
-          version: '1.0.4',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'code-6',
-          name: '源码6',
-          version: '1.0.5',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
+          editTime: '2018-5-10'
         }
       ]
     }
   },
   methods: {
-    addCode () {
-      // this.$router.go('/plan/developmentplan/submitFile')
-      // this.$router.push({path: '#/home/plan/developmentplan/submitFile'})
-      this.$router.push({ path: 'addSoftwareCoding' })
-    },
     handleEdit () {},
     handleCheck () {
-      this.dialogFormVisible = true
+      this.$router.push({path: 'checkItem'})
     },
     handleDelete () {}
   }
