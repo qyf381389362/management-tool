@@ -2,7 +2,7 @@
  * @Author: qinyufei
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 13:24:31
+ * @Last Modified time: 2018-05-10 13:56:02
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -181,6 +181,11 @@ export default new Router({
           path: 'myCheckList',
           name: 'MyCheckList',
           component: MyCheckList
+        },
+        {
+          path: 'myReviewList',
+          name: 'MyReviewList',
+          component: MyReviewList
         },
         {
           path: 'checkItem',
