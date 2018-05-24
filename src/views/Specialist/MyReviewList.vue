@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 13:19:32 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-24 14:44:14
+ * @Last Modified time: 2018-05-24 14:46:21
  */
 
 <!--我的评审页面-->
@@ -10,7 +10,7 @@
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
-        <el-breadcrumb-item>我的核查</el-breadcrumb-item>
+        <el-breadcrumb-item>我的评审</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <el-form :model="form">
