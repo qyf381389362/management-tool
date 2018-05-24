@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 13:13:52
+ * @Last Modified time: 2018-05-24 14:15:08
  */
 
 <template>
@@ -24,10 +24,11 @@
           <el-menu-item index="/home/baseLineList">基线列表</el-menu-item>
         </el-submenu>
         <el-menu-item class="menuItem" index="/projects">项目列表</el-menu-item>
+        <el-menu-item class="menuItem" index="/home/checkSteps">项目进度</el-menu-item>
         <el-submenu class="menuItem" index="2">
           <template slot="title">我的</template>
           <el-menu-item index="/home/myCheckList">我的核查</el-menu-item>
-          <el-menu-item index="/home/baseLineList">我的评审</el-menu-item>
+          <el-menu-item index="/home/myReviewList">我的评审</el-menu-item>
         </el-submenu>
         <el-menu-item class="menuItem" index="/">退出</el-menu-item>
       </el-menu>

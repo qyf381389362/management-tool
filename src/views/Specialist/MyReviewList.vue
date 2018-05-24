@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 13:19:32 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 13:20:18
+ * @Last Modified time: 2018-05-24 14:44:14
  */
 
 <!--我的评审页面-->
@@ -81,7 +81,7 @@
             <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">评审</el-button>
+                  @click="handleCheck(scope.$index, scope.row)">评审</el-button>
               </template>
           </el-table-column>
         </el-table>
@@ -127,7 +127,7 @@
 </template>
 <script>
 export default {
-  name: 'MyCheckList',
+  name: 'MyReviewList',
   data () {
     return {
       form: {
@@ -166,7 +166,7 @@ export default {
   methods: {
     handleEdit () {},
     handleCheck () {
-      this.dialogFormVisible = true
+      this.$router.push({path: 'ReviewItem'})
     },
     handleDelete () {}
   }

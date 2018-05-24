@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 13:10:20 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 13:31:46
+ * @Last Modified time: 2018-05-24 13:50:19
  */
 
 <!--我的核查页面-->
@@ -81,7 +81,7 @@
             <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">核查</el-button>
+                  @click="handleCheck(scope.$index, scope.row)">核查</el-button>
               </template>
           </el-table-column>
         </el-table>

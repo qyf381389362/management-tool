@@ -2,7 +2,7 @@
  * @Author: qinyufei
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 13:56:02
+ * @Last Modified time: 2018-05-24 14:04:41
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -17,11 +17,12 @@ import SCMPlan from '../views/Plan//SoftSCMPlan'
 import DesignStandard from '../views/Plan/SoftDesignStandard'
 import CodingStandard from '../views/Plan/SoftCodingStandard'
 import DemandStandard from '../views/Plan/SoftDemandStandard'
+import SubmitFile from '../views/Plan/SubmitFile'
 import CreateBaseLine from '../views/common/CreateBaseLine'
 import CheckBaseLine from '../views/common/CheckBaseLine'
 import BaseLineList from '../views/common/BaseLineList'
-import SubmitFile from '../views/Plan/SubmitFile'
 import ProblemReport from '../views/common/ProblemReport'
+import CheckSteps from '../views/common/CheckSteps'
 import SystemRequirements from '../views/Develop/SystemRequirements'
 import AddSystemRequirement from '../views/Develop/AddSystemRequirement'
 import HighLevelRequirements from '../views/Develop/HighLevelRequirements'
@@ -196,6 +197,11 @@ export default new Router({
           path: 'reviewItem',
           name: 'ReviewItem',
           component: ReviewItem
+        },
+        {
+          path: 'checkSteps',
+          name: 'CheckSteps',
+          component: CheckSteps
         }
       ]
     }
