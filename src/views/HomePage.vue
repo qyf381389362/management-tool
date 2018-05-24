@@ -101,7 +101,7 @@ export default {
       asideBar: [],
       activeIndex: '',
       isPlanCompleted: false,
-      isDevCompleted: false
+      isDevCompleted: true
     }
   }
 }
