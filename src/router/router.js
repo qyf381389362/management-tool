@@ -1,8 +1,8 @@
 /*
- * @Author: qinyufei
+ * @Author: 秦雨霏
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-24 14:04:41
+ * @Last Modified time: 2018-06-04 21:04:34
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -37,6 +37,8 @@ import MyCheckList from '../views/Specialist/MyCheckList'
 import CheckItem from '../views/Specialist/CheckItem'
 import MyReviewList from '../views/Specialist/MyReviewList'
 import ReviewItem from '../views/Specialist/ReviewItem'
+import CheckPlanItems from '../views/Specialist/CheckPlanItems'
+import CheckLowLevelRequirements from '../views/Specialist/CheckLowLevelRequirements'
 
 Vue.use(Router)
 
@@ -197,6 +199,16 @@ export default new Router({
           path: 'reviewItem',
           name: 'ReviewItem',
           component: ReviewItem
+        },
+        {
+          path: 'checkPlanItems',
+          name: 'CheckPlanItems',
+          component: CheckPlanItems
+        },
+        {
+          path: 'checkLLR',
+          name: 'CheckLowLevelRequirements',
+          component: CheckLowLevelRequirements
         },
         {
           path: 'checkSteps',

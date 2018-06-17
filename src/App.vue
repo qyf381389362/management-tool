@@ -1,8 +1,8 @@
 /*
  * @Author: qinyufei 
  * @Date: 2018-03-02 16:33:33 
- * @Last Modified by: qinyufei
- * @Last Modified time: 2018-03-02 17:13:13
+ * @Last Modified by: 秦雨霏
+ * @Last Modified time: 2018-06-03 23:55:33
  */
 
 <template>
@@ -30,5 +30,6 @@ export default {
     position: absolute;
     height: 100%;
     width: 100%;
+    font-size: 18px;
   }
 </style>

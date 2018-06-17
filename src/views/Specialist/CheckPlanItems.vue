@@ -1,27 +1,26 @@
 /*
  * @Author: 秦雨霏 
- * @Date: 2018-05-10 13:22:57 
+ * @Date: 2018-06-03 23:35:27 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 13:43:09
+ * @Last Modified time: 2018-06-03 23:54:46
  */
+<!--验证软件计划过程页面-->
 <template>
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
-        <el-breadcrumb-item>我的核查</el-breadcrumb-item>
+        <el-breadcrumb-item>软件计划过程核查</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
         <div class="data">
-          <p>标识:</p>
-          <p>名称:</p>
-          <p>版本:</p>
-          <p>创建时间:</p>
-          <p>创建人:</p>
-          <p>修改人:</p>
-          <p>修改时间:</p>
-          <p>追踪项:</p>
-          <p>备注:</p>
-          <p>附件:</p>
+          <p>软件开发计划(SDP):&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件开发计划</router-link></p>
+          <p>软件验证计划(SVP):&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件验证计划</router-link></p>
+          <p>软件审定计划(PSAC):&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件审定计划</router-link></p>
+          <p>软件配置管理计划(SCMP):&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件配置管理计划</router-link></p>
+          <p>软件质量保证计划(SQAP):&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件质量保证计划</router-link></p>
+          <p>软件需求标准:&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件需求标准</router-link></p>
+          <p>软件设计标准:&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件设计标准</router-link></p>
+          <p>软件编码标准:&nbsp;&nbsp;&nbsp;&nbsp;<router-link to='/home/plan/developmentplan'>软件编码标准</router-link></p>
         </div>
         <el-table 
           :data="tableData"
@@ -82,7 +81,7 @@
 </template>
 <script>
 export default {
-  name: 'CheckItem',
+  name: 'CheckPlanItems',
   data () {
     return {
       form: {
@@ -94,56 +93,49 @@ export default {
       tableData: [
         {
           id: '1',
-          name: '数据需求描述是否清晰、准确、一致、无二义性?(独立性要求)',
+          name: '是否定义了软件生命周期过程活动？',
           pass: '',
           refused: '',
           notApplicable: ''
         },
         {
           id: '2',
-          name: '数据是否及时、准确、完整?',
+          name: '是否定义了过程之间的相互关系、顺序、反馈机制和转换准则？',
           pass: '',
           refused: '',
           notApplicable: ''
         },
         {
           id: '3',
-          name: '数据是否可追踪到系统需求？',
+          name: '是否定义并选择了软件生命周期环境？',
           pass: '',
           refused: '',
           notApplicable: ''
         },
         {
           id: '4',
-          name: '高层需求符合系统需求（独立性要求）',
+          name: '强调其他考虑因素',
           pass: '',
           refused: '',
           notApplicable: ''
         },
         {
           id: '5',
-          name: '高层需求是否与目标计算机相兼容？',
+          name: '是否定义了软件开发标准?',
           pass: '',
           refused: '',
           notApplicable: ''
         },
         {
           id: '6',
-          name: '高层需求可验证',
+          name: '软件计划是否满足本文件要求？',
           pass: '',
           refused: '',
           notApplicable: ''
         },
         {
           id: '7',
-          name: '高层需求符合标准',
-          pass: '',
-          refused: '',
-          notApplicable: ''
-        },
-        {
-          id: '8',
-          name: '算法是否准确？',
+          name: '协调软件计划的开发与修正',
           pass: '',
           refused: '',
           notApplicable: ''
