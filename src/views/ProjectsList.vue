@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-09 20:08:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 01:47:40
+ * @Last Modified time: 2018-06-18 16:46:09
  */
 <!--项目列表和新建项目页面-->
 <template>
@@ -78,21 +78,21 @@
       :visible.sync="dialogFormVisible"
       class="dialog"
     >
-      <el-form :model="form">
+      <el-form :model="form" :rules="rules" ref="form">
         <el-row>
           <el-col :span="16">
-            <el-form-item label="项目名称" :label-width="formLabelWidth">
+            <el-form-item label="项目名称" :label-width="formLabelWidth" prop="name">
               <el-input v-model="form.name" auto-complete="off"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
-        <el-form-item label="研制标准" :label-width="formLabelWidth">
+        <el-form-item label="研制标准" :label-width="formLabelWidth" prop="standard">
           <el-select v-model="form.standard" placeholder="请选择研制标准">
             <el-option label="DO-178B/C" value="DO-178B/C"></el-option>
             <!-- <el-option label="GJB2786A/438B/5000A" value="GJB2786A/438B/5000A"></el-option> -->
           </el-select>
         </el-form-item>
-        <el-form-item label="软件等级" :label-width="formLabelWidth">
+        <el-form-item label="软件等级" :label-width="formLabelWidth" prop="level">
           <el-select v-model="form.level" placeholder="请选择软件等级">
             <el-option label="A级" value="A"></el-option>
             <el-option label="B级" value="B"></el-option>
@@ -102,24 +102,24 @@
         </el-form-item>
         <el-row>
           <el-col :span="18">
-            <el-form-item label="项目负责人" :label-width="formLabelWidth">
-              <el-input v-model="form.executor" auto-complete="off"></el-input>
+            <el-form-item label="项目负责人" :label-width="formLabelWidth" prop="charge">
+              <el-input v-model="form.charge" auto-complete="off"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="18">
-            <el-form-item label="计划开始时间" :label-width="formLabelWidth">
+            <el-form-item label="计划开始时间" :label-width="formLabelWidth" prop="startDate">
               <el-date-picker
                 v-model="form.startDate"
                 type="date"
-                placeholder="选择日期"></el-date-picker>
+                placeholder="选择计划开始时间"></el-date-picker>
             </el-form-item>
-            <el-form-item label="计划完成时间" :label-width="formLabelWidth">
+            <el-form-item label="计划完成时间" :label-width="formLabelWidth" prop="endDate">
               <el-date-picker
                 v-model="form.endDate"
                 type="date"
-                placeholder="选择日期"></el-date-picker>
+                placeholder="选择计划完成时间"></el-date-picker>
             </el-form-item>
           </el-col>
         </el-row>
@@ -132,7 +132,7 @@
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="confirm">新建并启动</el-button>
+        <el-button type="primary" @click="confirm('form')">新建并启动</el-button>
         <el-button @click="dialogFormVisible = false">取 消</el-button>
       </div>
     </el-dialog>
@@ -151,12 +151,33 @@ export default {
         name: '',
         standard: '',
         level: '',
-        executor: '',
+        charge: '',
         startDate: '',
         endDate: '',
-        desc: ''
+        description: ''
       },
       formLabelWidth: '120px',
+      rules: {
+        name: [
+          { required: true, message: '请输入项目名称', trigger: 'blur' },
+          { max: 5, message: '长度不超过 15 个字符', trigger: 'blur' }
+        ],
+        standard: [
+          { required: true, message: '请选择研制标准', trigger: 'change' }
+        ],
+        level: [
+          { required: true, message: '请选择软件等级', trigger: 'change' }
+        ],
+        charge: [
+          { required: true, message: '请选择项目负责人', trigger: 'blur' }
+        ],
+        startDate: [
+          { type: 'date', required: true, message: '请选择计划开始时间', trigger: 'change' }
+        ],
+        endDate: [
+          { type: 'date', required: true, message: '请选择计划完成时间', trigger: 'change' }
+        ]
+      },
       tableData: [{
         date: '2017-05-02',
         name: '项目1',
@@ -184,9 +205,15 @@ export default {
     createProject () {
       this.dialogFormVisible = true
     },
-    confirm () {
-      this.dialogFormVisible = false
-      this.$router.push({path: '/home/plan'})
+    confirm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.dialogFormVisible = false
+          this.$router.push({path: '/home/plan'})
+        } else {
+          return false
+        }
+      })
     },
     handleEdit () {
     },
