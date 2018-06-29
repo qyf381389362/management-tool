@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-09 20:08:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-06-18 16:46:09
+ * @Last Modified time: 2018-06-29 20:59:15
  */
 <!--项目列表和新建项目页面-->
 <template>
@@ -160,7 +160,7 @@ export default {
       rules: {
         name: [
           { required: true, message: '请输入项目名称', trigger: 'blur' },
-          { max: 5, message: '长度不超过 15 个字符', trigger: 'blur' }
+          { max: 15, message: '长度不超过 15 个字符', trigger: 'blur' }
         ],
         standard: [
           { required: true, message: '请选择研制标准', trigger: 'change' }

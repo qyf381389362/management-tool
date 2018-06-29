@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-08 17:37:37 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 07:58:11
+ * @Last Modified time: 2018-06-29 21:04:41
  */
 
 <!--软件计划过程之上传文件-->
@@ -34,16 +34,6 @@
             <el-col :span="10">
               <el-form-item label="当前版本">
                 <el-input v-model="form.version"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="10">
-              <el-form-item label="状态" placeholder="请选择状态">
-                <el-select v-model="form.state">
-                  <el-option label="待审核" value="待审核"></el-option>
-                  <el-option label="审核中" value="审核中"></el-option>
-                </el-select>
               </el-form-item>
             </el-col>
           </el-row>
