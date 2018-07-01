@@ -30,32 +30,40 @@
           <el-table
             stripe
             :data="tableData"
-            style="width: 100%">
-            <el-table-column
-              label="项目名称">
+            style="width: 100%"
+            :header-cell-style="toCenter"
+            :cell-style="toCenter">
+            <el-table-column label="项目名称">
               <template slot-scope="scope">
                 <span style="margin-left: 10px">{{ scope.row.name }}</span>
               </template>
             </el-table-column>
-            <el-table-column
-              label="创建日期">
+            <el-table-column label="创建日期">
               <template slot-scope="scope">
                 <i class="el-icon-time"></i>
                 <span style="margin-left: 10px">{{ scope.row.date }}</span>
               </template>
             </el-table-column>
-            <el-table-column
-              label="负责人">
+            <el-table-column label="负责人">
               <template slot-scope="scope">
                 <font-awesome-icon :icon="['fas', 'user-tie']"/>
                 <span style="margin-left: 10px">{{ scope.row.charge }}</span>
               </template>
             </el-table-column>
-            <el-table-column
-              label="进度">
+            <el-table-column label="进度">
               <template slot-scope="scope">
                 <font-awesome-icon :icon="['fas', 'calendar-alt']"/>
                 <span style="margin-left: 10px">{{ scope.row.schedule }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column label="成员数">
+              <template slot-scope="scope">
+                <span style="margin-left: 10px">{{ scope.row.members }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column label="工作项数">
+              <template slot-scope="scope">
+                <span style="margin-left: 10px">{{ scope.row.workItems }}</span>
               </template>
             </el-table-column>
             <el-table-column label="操作">
@@ -218,6 +226,12 @@ export default {
     handleEdit () {
     },
     handleDelete () {
+    },
+    // 设置表头操作列的样式
+    toCenter ({row, column, rowIndex, columnIndex}) {
+      if (columnIndex === 6) {
+        return 'text-align:center'
+      }
     }
   }
 }
