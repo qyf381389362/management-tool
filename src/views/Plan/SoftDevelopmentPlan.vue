@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:32:41
+ * @Last Modified time: 2018-07-02 20:12:49
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -15,17 +15,22 @@
       <el-card class="content">
         <el-form :model="form">
           <el-row :gutter="20">
-            <el-col :span="3">
+            <el-col :span="5">
               <el-form-item>
-              <el-button
-                type="primary" 
-                @click="submitFile"
-                round>
-                上传计划
-              </el-button>
+                <el-button
+                  type="primary" 
+                  @click="submitFile"
+                  round>
+                  上传计划
+                </el-button>
+                <span class="exportContainer cursorPointer">
+                  <font-awesome-icon class="fileExport circle-button" :icon="['fas', 'file-archive']"/>
+                  <span>导出</span>
+                </span>
+                <!-- <span class="circle-button"></span> -->
               </el-form-item>
             </el-col>
-            <el-col :span="3" :offset="13">
+            <el-col :span="3" :offset="11">
               <el-form-item>
                 <el-select placeholder="请选择版本">
                   <el-option label="1.0.0" value="1"></el-option>
@@ -48,7 +53,9 @@
         <el-table 
           :data="tableData"
           stripe
-          style="width:100%">
+          style="width:100%"
+          :header-cell-style="toCenter"
+          :cell-style="toCenter">
           <el-table-column
             prop="id"
             label="标识">
@@ -60,10 +67,6 @@
           <el-table-column
             prop="version"
             label="当前版本">
-          </el-table-column>
-          <el-table-column
-            prop="period"
-            label="阶段">
           </el-table-column>
           <el-table-column
             prop="state"
@@ -97,22 +100,33 @@
               </template>
           </el-table-column>
         </el-table>
+        <el-dialog
+          title="新建工作项"
+          :visible.sync="dialogVisible"
+          width="70%">
+            <new-item v-if="showEditor"></new-item>
+        </el-dialog>
       </el-card>
     </el-main>
   </el-container>
 </template>
 <script>
+import NewItem from '../../components/NewItem'
 export default {
   name: 'DevelopmentPlan',
+  components: {
+    NewItem
+  },
   data () {
     return {
       form: {},
+      showEditor: true,
+      dialogVisible: true,
       tableData: [
         {
           id: 'SDP-1',
           name: '软件开发计划1',
           version: '1.0.4',
-          period: '',
           state: '未审核',
           creater: '秦雨霏',
           createTime: '2017-10-2',
@@ -123,7 +137,6 @@ export default {
           id: 'SDP-2',
           name: '软件开发计划2',
           version: '1.0.3',
-          period: '',
           state: '未审核',
           creater: '秦雨霏',
           createTime: '2017-10-2',
@@ -134,7 +147,6 @@ export default {
           id: 'SDP-3',
           name: '软件开发计划3',
           version: '1.0.2',
-          period: '',
           state: '未审核',
           creater: '秦雨霏',
           createTime: '2017-10-2',
@@ -145,7 +157,6 @@ export default {
           id: 'SDP-4',
           name: '软件开发计划4',
           version: '1.0.1',
-          period: '',
           state: '未审核',
           creater: '秦雨霏',
           createTime: '2017-10-2',
@@ -156,7 +167,6 @@ export default {
           id: 'SDP-5',
           name: '软件开发计划5',
           version: '1.0.0',
-          period: '',
           state: '未审核',
           creater: '秦雨霏',
           createTime: '2017-10-2',
@@ -173,10 +183,32 @@ export default {
       this.$router.push({ path: 'developmentplan/submitFile' })
     },
     handleEdit () {},
-    handleDelete () {}
+    handleDelete () {},
+    // 设置表头操作列的样式
+    toCenter ({row, column, rowIndex, columnIndex}) {
+      if (columnIndex === 8) {
+        return 'text-align:center'
+      }
+    }
   }
 }
 </script>
 <style scoped>
-  
+.exportContainer {
+  position:absolute;
+}
+.fileExport {
+  margin-left: 30px;
+  margin-top: 4px;
+  display: inline-block;
+  color: #409EFF;
+}
+.circle-button {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 4px 0 rgba(152, 142, 142, 1);
+  border-radius: 50%;
+  padding: 5px;
+}
 </style>

@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-04 21:31:14 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-09 19:42:23
+ * @Last Modified time: 2018-07-02 21:54:13
  */
 * {
   margin:0;
@@ -29,5 +29,26 @@
 }
 .buttonGroup {
   margin-top: 40px;
+}
+.clearfix::after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.cursorPointer {
+  cursor: pointer;
+}
+
+/* 和盒模型相关的样式 */
+.w200 {
+  width: 200px;
+}
+.mt5 {
+  margin-top: 5px;
+}
+.mb10 {
+  margin-bottom: 10px;
 }
 
