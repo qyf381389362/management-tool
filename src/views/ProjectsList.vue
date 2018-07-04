@@ -30,9 +30,7 @@
           <el-table
             stripe
             :data="tableData"
-            style="width: 100%"
-            :header-cell-style="toCenter"
-            :cell-style="toCenter">
+            style="width: 100%">
             <el-table-column label="项目名称">
               <template slot-scope="scope">
                 <span style="margin-left: 10px">{{ scope.row.name }}</span>
@@ -66,7 +64,7 @@
                 <span style="margin-left: 10px">{{ scope.row.workItems }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column label="操作" align="center">
               <template slot-scope="scope">
                 <el-button
                   size="mini"
@@ -226,12 +224,6 @@ export default {
     handleEdit () {
     },
     handleDelete () {
-    },
-    // 设置表头操作列的样式
-    toCenter ({row, column, rowIndex, columnIndex}) {
-      if (columnIndex === 6) {
-        return 'text-align:center'
-      }
     }
   }
 }

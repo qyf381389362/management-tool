@@ -53,9 +53,7 @@
         <el-table 
           :data="tableData"
           stripe
-          style="width:100%"
-          :header-cell-style="toCenter"
-          :cell-style="toCenter">
+          style="width:100%">
           <el-table-column
             prop="id"
             label="标识">
@@ -88,7 +86,7 @@
             prop="editTime"
             label="编辑时间">
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column label="操作" align="center">
             <template slot-scope="scope">
                 <el-button
                   size="mini"
@@ -121,7 +119,7 @@ export default {
     return {
       form: {},
       showEditor: true,
-      dialogVisible: true,
+      dialogVisible: false,
       tableData: [
         {
           id: 'SDP-1',
@@ -180,7 +178,8 @@ export default {
     submitFile: function () {
       // this.$router.go('/plan/developmentplan/submitFile')
       // this.$router.push({path: '#/home/plan/developmentplan/submitFile'})
-      this.$router.push({ path: 'developmentplan/submitFile' })
+      // this.$router.push({ path: 'developmentplan/submitFile' })
+      this.dialogVisible = true
     },
     handleEdit () {},
     handleDelete () {},

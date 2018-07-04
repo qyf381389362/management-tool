@@ -63,7 +63,7 @@
 .text {
   border: 1px solid #ccc;
   border-top: none;
-  height: 500px;
+  height: 520px;
 }
 </style>
 
