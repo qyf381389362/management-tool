@@ -1,3 +1,10 @@
+/*
+ * @Author: 秦雨霏 
+ * @Date: 2018-07-04 23:21:35 
+ * @Last Modified by:   秦雨霏 
+ * @Last Modified time: 2018-07-04 23:21:35 
+ */
+
 <template>
   <div>
     <div ref="toolbar" class="toolbar"></div>
@@ -63,7 +70,7 @@
 .text {
   border: 1px solid #ccc;
   border-top: none;
-  height: 500px;
+  height: 520px;
 }
 </style>
 

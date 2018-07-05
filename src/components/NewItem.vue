@@ -117,19 +117,97 @@
               <span class="mt5">优先级：</span>
             </el-col>
             <el-col :span="18">
-              <el-input-number
-                v-model="form.manHour"
-                controls-position="right"
-                :min="1">
-              </el-input-number>
-              <span>人时</span>
+              <el-radio
+                v-model="form.priority"
+                label="low">
+                低
+              </el-radio>
+              <el-radio
+                v-model="form.priority"
+                label="medium">
+                中
+              </el-radio>
+              <el-radio
+                v-model="form.priority"
+                label="high">
+                高
+              </el-radio>
+            </el-col>
+          </el-row>
+        </div>
+        <div class="mb10">
+          <el-row>
+            <el-col :span="6">
+              <span class="mt5">重要程度：</span>
+            </el-col>
+            <el-col :span="18">
+              <el-select
+                v-model="form.importance"
+                filterable
+                size="medium"
+                placeholder="请选择"
+                class="w200">
+                <el-option
+                  v-for="item in importanceItems"
+                  :key="item.code"
+                  :label="item.label"
+                  :value="item.code">
+                </el-option>
+              </el-select>
+            </el-col>
+          </el-row>
+        </div>
+        <div class="mb10">
+          <el-row>
+            <el-col :span="6">
+              <span class="mt5">备注：</span>
+            </el-col>
+            <el-col :span="18">
+              <el-input
+                type="textarea"
+                v-model="form.remarks"
+                :rows="3"
+                filterable
+                size="medium"
+                class="w200">
+              </el-input>
+            </el-col>
+          </el-row>
+        </div>
+        <div class="mb10">
+          <el-row>
+            <el-col :span="6">
+              <span class="mt5">上传附件：</span>
+            </el-col>
+            <el-col :span="18">
+              <el-upload
+                class="upload-area"
+                drag
+                action=""
+                multiple>
+                <i class="el-icon-upload"></i>
+                <div>将文件拖到此处，或<em>点击上传</em></div>
+                <div slot="tip">只能上传pdf文件，且不超过50M</div>
+              </el-upload>
             </el-col>
           </el-row>
         </div>
       </el-col>
     </el-row>
-    <el-row>
-      456
+    <el-row class="mt20">
+      <el-col :span="6" :offset="9">
+        <el-button
+          type="primary" 
+          @click="save"
+          round>
+          &nbsp;&nbsp;保&nbsp;&nbsp;存&nbsp;&nbsp;
+        </el-button>
+        <el-button 
+          @click="console"
+          round>
+          &nbsp;&nbsp;取&nbsp;&nbsp;消&nbsp;&nbsp;
+        </el-button>
+      </el-col>
     </el-row>
   </el-form>
   <!-- <editor></editor> -->
@@ -150,7 +228,10 @@ export default {
         version: '',
         startDate: '',
         endDate: '',
-        manHour: ''
+        manHour: '',
+        priority: '',
+        importance: '',
+        remarks: ''
       },
       members: [
         {
@@ -169,12 +250,26 @@ export default {
           id: '004',
           label: '许文静'
         }
+      ],
+      importanceItems: [
+        {
+          code: '1',
+          label: '关键'
+        },
+        {
+          code: '2',
+          label: '重要'
+        },
+        {
+          code: '3',
+          label: '一般'
+        }
       ]
     }
   },
   methods: {
     save () {
-      console.log('新建成功')
+      console.log('保存成功')
     },
     cansole () {
       console.log('取消')
@@ -188,5 +283,13 @@ export default {
 }
 .datePicker .el-date-editor.el-input {
   width: 200px;
+}
+.upload-area .el-upload-dragger{
+  width: 200px;
+  height: 120px;
+}
+.upload-area .el-upload-dragger .el-icon-upload {
+  font-size: 40px;
+  margin-top: 20px;
 }
 </style>
