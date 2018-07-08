@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-06-04 21:04:34
+ * @Last Modified time: 2018-07-08 21:21:20
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -46,6 +46,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      component: Login
+    },
+    {
+      path: '/login',
       component: Login
     },
     {

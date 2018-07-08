@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-02 20:12:49
+ * @Last Modified time: 2018-07-08 21:44:37
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -32,17 +32,22 @@
             </el-col>
             <el-col :span="3" :offset="11">
               <el-form-item>
-                <el-select placeholder="请选择版本">
-                  <el-option label="1.0.0" value="1"></el-option>
-                  <el-option label="1.0.1" value="2"></el-option>
-                  <el-option label="1.0.2" value="3"></el-option>
-                  <el-option label="1.0.3" value="4"></el-option>
+                <el-select
+                  v-model="form.version"
+                  placeholder="请选择版本">
+                  <el-option
+                    v-for="item in versions"
+                    :key="item.version"
+                    :label="item.label"
+                    :value="item.version">
+                  </el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item>
-                <el-input 
+                <el-input
+                  v-model="form.searchValue"
                   placeholder="请输入内容"
                   prefix-icon="el-icon-search">
                 </el-input>
@@ -98,17 +103,19 @@
               </template>
           </el-table-column>
         </el-table>
-        <el-dialog
+        <!-- <el-dialog
           title="新建工作项"
           :visible.sync="dialogVisible"
           width="70%">
             <new-item v-if="showEditor"></new-item>
-        </el-dialog>
+        </el-dialog> -->
       </el-card>
     </el-main>
   </el-container>
 </template>
 <script>
+import axios from '@/config/axios.config'
+import api from '@/config/api'
 import NewItem from '../../components/NewItem'
 export default {
   name: 'DevelopmentPlan',
@@ -120,6 +127,7 @@ export default {
       form: {},
       showEditor: true,
       dialogVisible: false,
+      versions: [],
       tableData: [
         {
           id: 'SDP-1',
@@ -174,8 +182,17 @@ export default {
       ]
     }
   },
+  mounted () {
+    this.getVersions()
+  },
   methods: {
-    submitFile: function () {
+    getVersions () {
+      // 向后台获取版本数据
+      axios.get(api.common.getVersions).then(res => {
+        this.versions = res.data.list
+      })
+    },
+    submitFile () {
       // this.$router.go('/plan/developmentplan/submitFile')
       // this.$router.push({path: '#/home/plan/developmentplan/submitFile'})
       // this.$router.push({ path: 'developmentplan/submitFile' })
