@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-24 14:15:08
+ * @Last Modified time: 2018-07-09 23:40:02
  */
 
 <template>
@@ -70,16 +70,18 @@
             <el-menu-item index="/home/develop/lowLevelRequirements">低层需求</el-menu-item>
             <el-menu-item index="/home/develop/softwareStructure">软件架构</el-menu-item>
             <el-menu-item index="/home/develop/softwareCoding">软件编码</el-menu-item>
+            <el-menu-item index="/home/develop/softwareCoding">软件集成</el-menu-item>
             <el-menu-item index="/home/plan/problemReport">问题报告</el-menu-item>
           </el-submenu>
           <el-submenu
-            index="3"
+            index="/home/test"
             :disabled='isDevCompleted'>
             <template slot="title">
               <i class="el-icon-menu"></i>
-              <span>软件综合过程</span>
+              <span>测试</span>
             </template>
-            <el-menu-item index="3-1">软件集成</el-menu-item>
+            <el-menu-item index="/home/test/testCaseManagement">用例管理</el-menu-item>
+            <el-menu-item index="/home/test/testOverview">测试总览</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -101,7 +103,7 @@ export default {
       asideBar: [],
       activeIndex: '',
       isPlanCompleted: false,
-      isDevCompleted: true
+      isDevCompleted: false
     }
   }
 }

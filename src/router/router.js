@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-02 16:33:13
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-08 21:21:20
+ * @Last Modified time: 2018-07-09 23:47:08
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -39,6 +39,8 @@ import MyReviewList from '../views/Specialist/MyReviewList'
 import ReviewItem from '../views/Specialist/ReviewItem'
 import CheckPlanItems from '../views/Specialist/CheckPlanItems'
 import CheckLowLevelRequirements from '../views/Specialist/CheckLowLevelRequirements'
+import TestCaseManagement from '../views/Test/testCaseManagement'
+import TestOverview from '../views/Test/testOverview'
 
 Vue.use(Router)
 
@@ -218,6 +220,21 @@ export default new Router({
           path: 'checkSteps',
           name: 'CheckSteps',
           component: CheckSteps
+        },
+        {
+          path: 'test',
+          name: 'test',
+          component: AddSoftwareStructure
+        },
+        {
+          path: 'test/testCaseManagement',
+          name: 'testCaseManagement',
+          component: TestCaseManagement
+        },
+        {
+          path: 'test/testOverview',
+          name: 'testOverview',
+          component: TestOverview
         }
       ]
     }
