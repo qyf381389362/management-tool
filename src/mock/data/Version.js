@@ -1,3 +1,4 @@
+// import Mock from 'mockjs'
 const Versions = {
   'list': [
     {
