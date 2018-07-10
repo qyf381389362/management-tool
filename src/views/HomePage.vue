@@ -1,8 +1,8 @@
 /*
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
- * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-09 23:40:02
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2018-07-10 09:59:01
  */
 
 <template>
@@ -151,12 +151,6 @@ export default {
   height: 50px;
 }
 .menuItem {
-  height: 50px;
-}
-/* .el-menu--horizontal>.el-submenu .el-submenu__title {
-  height: 50px;
-} */
-.header .topMenu>.el-submenu .el-submenu__title {
   height: 50px;
 }
 </style>
