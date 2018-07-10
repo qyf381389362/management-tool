@@ -83,6 +83,12 @@
             <el-menu-item index="/home/test/testCaseManagement">用例管理</el-menu-item>
             <el-menu-item index="/home/test/testOverview">测试总览</el-menu-item>
           </el-submenu>
+          <el-submenu index="/home/Wiki">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>Wiki</span>
+            </template>
+          </el-submenu>
         </el-menu>
       </el-aside>
       <!-- 内容区域 -->
@@ -147,7 +153,10 @@ export default {
 .menuItem {
   height: 50px;
 }
-.menuItem .submenu__title {
+/* .el-menu--horizontal>.el-submenu .el-submenu__title {
+  height: 50px;
+} */
+.header .topMenu>.el-submenu .el-submenu__title {
   height: 50px;
 }
 </style>
