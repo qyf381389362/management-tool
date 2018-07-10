@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-08 21:44:37
+ * @Last Modified time: 2018-07-11 00:29:20
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -103,12 +103,15 @@
               </template>
           </el-table-column>
         </el-table>
-        <!-- <el-dialog
+        <div v-if="isShowItem">
+          <item></item>
+        </div>
+        <el-dialog
           title="新建工作项"
           :visible.sync="dialogVisible"
           width="70%">
             <new-item v-if="showEditor"></new-item>
-        </el-dialog> -->
+        </el-dialog>
       </el-card>
     </el-main>
   </el-container>
@@ -117,16 +120,19 @@
 import axios from '@/config/axios.config'
 import api from '@/config/api'
 import NewItem from '../../components/NewItem'
+import Item from '../../components/Item'
 export default {
   name: 'DevelopmentPlan',
   components: {
-    NewItem
+    NewItem,
+    Item
   },
   data () {
     return {
       form: {},
       showEditor: true,
       dialogVisible: false,
+      isShowItem: false,
       versions: [],
       tableData: [
         {

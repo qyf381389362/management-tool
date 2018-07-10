@@ -1,3 +1,10 @@
+/*
+ * @Author: 秦雨霏
+ * @Date: 2018-07-10 23:52:01
+ * @Last Modified by: 秦雨霏
+ * @Last Modified time: 2018-07-11 00:18:38
+ * @Description: 新建测试用例
+ */
 <template>
   <el-form :model="form" :rules="rules" ref="form">
     <el-row :gutter="30">
@@ -215,7 +222,7 @@
 <script>
 import Editor from './Editor'
 export default {
-  name: 'newItem',
+  name: 'testItem',
   components: {
     Editor
   },

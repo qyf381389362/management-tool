@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-04 21:31:14 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-02 21:54:13
+ * @Last Modified time: 2018-07-11 00:15:59
  */
 * {
   margin:0;
@@ -44,6 +44,9 @@
 /* 和盒模型相关的样式 */
 .w200 {
   width: 200px;
+}
+.percentWidth_100 {
+  width: 100%;
 }
 .mt5 {
   margin-top: 5px;

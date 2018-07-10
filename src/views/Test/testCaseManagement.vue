@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-09 23:43:50
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-09 23:59:23
+ * @Last Modified time: 2018-07-11 00:00:05
  * @Description: 测试用例管理页面
  */
 
@@ -102,24 +102,33 @@
               </template>
           </el-table-column>
         </el-table>
+        <el-dialog
+          title="新建测试用例"
+          :visible.sync="dialogVisible"
+          width="70%">
+            <test-item></test-item>
+        </el-dialog>
       </el-card>
     </el-main>
   </el-container>
 </template>
 <script>
+import TestItem from '../../components/TestItem'
 export default {
   name: 'TestCaseManagement',
+  components: {
+    TestItem
+  },
   data () {
     return {
       form: {},
-      tableData: []
+      tableData: [],
+      dialogVisible: false
     }
   },
   methods: {
     newCase: function () {
-      // this.$router.go('/plan/developmentplan/submitFile')
-      // this.$router.push({path: '#/home/plan/developmentplan/submitFile'})
-      this.$router.push({ path: 'developmentplan/submitFile' })
+      this.dialogVisible = true
     },
     handleEdit () {},
     handleDelete () {}
