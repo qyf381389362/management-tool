@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-11 00:29:20
+ * @Last Modified time: 2018-07-11 23:28:07
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -112,6 +112,7 @@
           width="70%">
             <new-item v-if="showEditor"></new-item>
         </el-dialog>
+        <drawer v-if="isCheckItem"></drawer>
       </el-card>
     </el-main>
   </el-container>
@@ -121,11 +122,13 @@ import axios from '@/config/axios.config'
 import api from '@/config/api'
 import NewItem from '../../components/NewItem'
 import Item from '../../components/Item'
+import Drawer from '../../components/Drawer'
 export default {
   name: 'DevelopmentPlan',
   components: {
     NewItem,
-    Item
+    Item,
+    Drawer
   },
   data () {
     return {
@@ -133,6 +136,7 @@ export default {
       showEditor: true,
       dialogVisible: false,
       isShowItem: false,
+      isCheckItem: false,
       versions: [],
       tableData: [
         {
@@ -204,7 +208,10 @@ export default {
       // this.$router.push({ path: 'developmentplan/submitFile' })
       this.dialogVisible = true
     },
-    handleEdit () {},
+    handleEdit () {
+      this.isCheckItem = true
+      console.log(123)
+    },
     handleDelete () {},
     // 设置表头操作列的样式
     toCenter ({row, column, rowIndex, columnIndex}) {

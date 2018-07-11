@@ -13,7 +13,7 @@
           <el-input
             v-model="form.name"
             auto-complete="off"
-            placeholder="请输入标题名称"
+            placeholder="请输入用例名称"
             class="nameHolder"
           >
           </el-input>
