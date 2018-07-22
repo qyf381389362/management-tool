@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-02 19:15:53 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-22 22:46:57
+ * @Last Modified time: 2018-07-23 00:34:34
  */
 <!--软件计划过程之软件验证计划页面-->
 <template>
@@ -93,7 +93,17 @@
             <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+                  @click="handleEdit(scope.$index, scope.row)"
+                >
+                  查看
+                </el-button>
+                <el-button
+                  size="mini"
+                  type="primary"
+                  @click="handleCheck(scope.$index, scope.row)"
+                >
+                  审核
+                </el-button>
                 <el-button
                   size="mini"
                   type="danger"

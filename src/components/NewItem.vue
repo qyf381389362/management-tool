@@ -102,12 +102,19 @@
               <span class="mt5">预计工时：</span>
             </el-col>
             <el-col :span="18">
-              <el-input-number
-                v-model="form.manHour"
-                controls-position="right"
-                :min="1">
-              </el-input-number>
-              <span>人时</span>
+              <el-row>
+                <el-col :span="18">
+                  <el-input-number
+                    v-model="form.manHour"
+                    controls-position="right"
+                    :min="1"
+                  >
+                  </el-input-number>
+                </el-col>
+                <el-col :span="6">
+                  <span>人时</span>
+                </el-col>
+              </el-row>              
             </el-col>
           </el-row>
         </div>

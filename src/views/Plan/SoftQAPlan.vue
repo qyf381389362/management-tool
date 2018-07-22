@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 04:01:40 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-22 22:46:20
+ * @Last Modified time: 2018-07-23 00:36:09
  */
 
 <template>
@@ -93,11 +93,24 @@
             <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+                  @click="handleEdit(scope.$index, scope.row)"
+                >
+                  查看
+                </el-button>
+                <el-button
+                  size="mini"
+                  type="primary"
+                  @click="handleCheck(scope.$index, scope.row)"
+                >
+                  审核
+                </el-button>
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                  @click="handleDelete(scope.$index, scope.row)"
+                >
+                  删除
+                </el-button>
               </template>
           </el-table-column>
         </el-table>
