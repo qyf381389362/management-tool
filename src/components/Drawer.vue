@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-11 23:18:16
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-11 23:39:41
+ * @Last Modified time: 2018-07-22 22:28:03
  * @Description: 全屏遮罩层
  */
 <template>
@@ -11,20 +11,31 @@
     class="drawerWrapper"
     @click="hide"
   >
+    <check-item></check-item>
   </div>
 </template>
 <script>
+import CheckItem from './CheckItem'
 export default {
   name: 'Drawer',
+  components: {
+    CheckItem
+  },
+  props: {
+    isShow: Boolean
+  },
   data () {
     return {
-      isShow: true
+      // isShowDrawer: this.isShow
     }
   },
   methods: {
     hide () {
-      this.isShow = false
+      this.$emit('hideDrawer')
     }
+  },
+  mounted () {
+    // console.log(this.isShowDrawer, 12345678)
   }
 }
 </script>

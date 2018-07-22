@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-11 23:28:07
+ * @Last Modified time: 2018-07-22 22:45:14
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -91,15 +91,32 @@
             prop="editTime"
             label="编辑时间">
           </el-table-column>
-          <el-table-column label="操作" align="center">
+          <el-table-column
+            label="操作"
+            min-width="200"
+            align="center"
+          >
             <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+                  @click="handleEdit(scope.$index, scope.row)"
+                >
+                  查看
+                </el-button>
+                <el-button
+                  size="mini"
+                  type="primary"
+                  @click="handleCheck(scope.$index, scope.row)"
+                >
+                  审核
+                </el-button>
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                  @click="handleDelete(scope.$index, scope.row)"
+                >
+                  删除
+                </el-button>
               </template>
           </el-table-column>
         </el-table>
@@ -112,7 +129,7 @@
           width="70%">
             <new-item v-if="showEditor"></new-item>
         </el-dialog>
-        <drawer v-if="isCheckItem"></drawer>
+        <drawer :is-show="isCheckItem" @hideDrawer="hideDrawer"></drawer>
       </el-card>
     </el-main>
   </el-container>
@@ -210,9 +227,12 @@ export default {
     },
     handleEdit () {
       this.isCheckItem = true
-      console.log(123)
     },
+    handleCheck () {},
     handleDelete () {},
+    hideDrawer () {
+      this.isCheckItem = false
+    },
     // 设置表头操作列的样式
     toCenter ({row, column, rowIndex, columnIndex}) {
       if (columnIndex === 8) {

@@ -109,7 +109,9 @@
         <el-row>
           <el-col :span="18">
             <el-form-item label="项目负责人" :label-width="formLabelWidth" prop="charge">
-              <el-input v-model="form.charge" auto-complete="off"></el-input>
+              <el-select v-model="form.charge" filterable placeholder="请选择项目负责人">
+                <el-option label="秦雨霏" value="qinyufei"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
         </el-row>

@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-02 19:15:53 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 04:36:01
+ * @Last Modified time: 2018-07-22 22:46:57
  */
 <!--软件计划过程之软件验证计划页面-->
 <template>
@@ -85,7 +85,11 @@
             prop="editTime"
             label="编辑时间">
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column
+            label="操作"
+            min-width="200"
+            align="center"
+          >
             <template slot-scope="scope">
                 <el-button
                   size="mini"

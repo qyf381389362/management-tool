@@ -290,6 +290,6 @@ export default {
 }
 .upload-area .el-upload-dragger .el-icon-upload {
   font-size: 40px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 </style>
