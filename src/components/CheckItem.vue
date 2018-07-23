@@ -10,14 +10,23 @@
     class="checkItem__container"
     @click.stop="stopProp"
   >
-    12345678
+    <div class="header">
+      <span v-model="form.id" class="idStyle">#4334213</span>
+      <span v-model="form.name">名称</span>
+      <span class="iconGroup">
+        <font-awesome-icon class="circle-button cursorPointer" :icon="['fas', 'compress']"/>
+        <font-awesome-icon class="circle-button cursorPointer" :icon="['fas', 'times']"/>
+      </span>
+    </div>
   </div>
 </template>
 <script>
 export default {
   name: 'CheckItem',
   data () {
-    return {}
+    return {
+      form: {}
+    }
   },
   methods: {
     stopProp () {
@@ -26,7 +35,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .checkItem__container {
   position: relative;
   float: right;
@@ -37,10 +46,31 @@ export default {
   background-color: #ffffff;
   width: 60%;
   height: 100%;
+  padding: 20px;
   box-shadow: 0 7px 21px #3a3e55;
   color: #303133;
   overflow: auto;
   /* z-index: 100; */
+}
+.idStyle {
+  color: #409EFF;
+  /* text-decoration: underline; */
+}
+.circle-button {
+  position: relative;
+  width: 20px !important;
+  height: 20px;
+  box-shadow: 0 0 4px 0 rgba(152, 142, 142, 1);
+  border-radius: 50%;
+  padding: 5px;
+}
+.iconGroup {
+  position: relative;
+  float: right;
+}
+.header {
+  border-bottom: 1px solid#d7d7d7;
+  padding-bottom: 20px;
 }
 </style>
 
