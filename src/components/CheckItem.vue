@@ -69,8 +69,7 @@ export default {
   /* z-index: 100; */
 }
 .fullScreen {
-  width: 100%;
-  padding-left: 100px;
+  width: 98%;
 }
 .idStyle {
   color: #409EFF;
