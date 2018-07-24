@@ -1,8 +1,8 @@
 /*
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-07-10 09:59:01
+ * @Last Modified by: 秦雨霏
+ * @Last Modified time: 2018-07-24 15:00:04
  */
 
 <template>
@@ -83,12 +83,18 @@
             <el-menu-item index="/home/test/testCaseManagement">用例管理</el-menu-item>
             <el-menu-item index="/home/test/testOverview">测试总览</el-menu-item>
           </el-submenu>
-          <el-submenu index="/home/Wiki">
+          <el-menu-item index="/home/authority">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>权限管理</span>
+            </template>
+          </el-menu-item>
+          <el-menu-item index="/home/wiki">
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>Wiki</span>
             </template>
-          </el-submenu>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <!-- 内容区域 -->

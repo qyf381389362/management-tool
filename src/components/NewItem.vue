@@ -1,3 +1,11 @@
+/*
+ * @Author: 秦雨霏
+ * @Date: 2018-07-24 15:13:32
+ * @Last Modified by: 秦雨霏
+ * @Last Modified time: 2018-07-24 15:13:59
+ * @Description: 新建工作项
+ */
+
 <template>
   <el-form :model="form" :rules="rules" ref="form">
     <el-row :gutter="30">

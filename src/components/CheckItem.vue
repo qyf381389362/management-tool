@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-22 19:34:57
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-22 23:33:18
+ * @Last Modified time: 2018-07-24 16:43:46
  * @Description: 当点击查看时弹出的查看列表项具体内容的模块
  */
 <template>
@@ -27,6 +27,33 @@
         />
       </span>
     </div>
+    <el-row class="mt10" :gutter="20">
+      <el-col :span="18">
+        <el-tabs v-model="activeName" class="tabs">
+          <el-tab-pane label="信息描述" name="information">
+            信息描述
+          </el-tab-pane>
+          <el-tab-pane label="子工作项" name="children">
+            子工作项 
+          </el-tab-pane>
+          <el-tab-pane label="关联工作项" name="relatedItems">
+            关联工作项 
+          </el-tab-pane>
+          <el-tab-pane label="关联WIKI" name="relatedWIKI">
+            关联WIKI
+          </el-tab-pane>
+          <el-tab-pane label="关联测试用例" name="relatedTestItems">
+            关联测试用例
+          </el-tab-pane>
+          <!-- <el-tab-pane label="操作历史" name="relatedWIKI">
+
+          </el-tab-pane> -->
+        </el-tabs>
+      </el-col>
+      <el-col :span="6">
+        <div class="header">基本信息</div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
@@ -35,6 +62,7 @@ export default {
   data () {
     return {
       isFullScreen: false,
+      activeName: 'information',
       form: {}
     }
   },
@@ -65,7 +93,7 @@ export default {
   padding: 20px;
   box-shadow: 0 7px 21px #3a3e55;
   color: #303133;
-  overflow: auto;
+  overflow: hidden;
   /* z-index: 100; */
 }
 .fullScreen {
@@ -90,5 +118,8 @@ export default {
 .header {
   border-bottom: 1px solid#d7d7d7;
   padding-bottom: 20px;
+}
+.tabs .el-tabs__item{
+  color: green;
 }
 </style>

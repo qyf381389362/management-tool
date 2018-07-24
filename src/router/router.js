@@ -1,8 +1,9 @@
 /*
  * @Author: 秦雨霏
- * @Date: 2018-03-02 16:33:13
+ * @Date: 2018-07-24 14:59:38
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-09 23:47:08
+ * @Last Modified time: 2018-07-24 15:13:05
+ * @Description: 项目路由管理
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -41,6 +42,8 @@ import CheckPlanItems from '../views/Specialist/CheckPlanItems'
 import CheckLowLevelRequirements from '../views/Specialist/CheckLowLevelRequirements'
 import TestCaseManagement from '../views/Test/testCaseManagement'
 import TestOverview from '../views/Test/testOverview'
+import Authority from '../views/Authority/Authority'
+import Wiki from '../views/Wiki/Wiki'
 
 Vue.use(Router)
 
@@ -221,10 +224,11 @@ export default new Router({
           name: 'CheckSteps',
           component: CheckSteps
         },
+        // 测试部分的路由
         {
           path: 'test',
           name: 'test',
-          component: AddSoftwareStructure
+          component: TestCaseManagement
         },
         {
           path: 'test/testCaseManagement',
@@ -235,6 +239,18 @@ export default new Router({
           path: 'test/testOverview',
           name: 'testOverview',
           component: TestOverview
+        },
+        // 权限管理部分的路由
+        {
+          path: 'authority',
+          name: 'authority',
+          component: Authority
+        },
+        // Wiki路由
+        {
+          path: 'wiki',
+          name: 'wiki',
+          component: Wiki
         }
       ]
     }
