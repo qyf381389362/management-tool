@@ -8,14 +8,23 @@
 <template>
   <div
     class="checkItem__container"
+    :class="{fullScreen: isFullScreen}"
     @click.stop="stopProp"
   >
     <div class="header">
       <span v-model="form.id" class="idStyle">#4334213</span>
       <span v-model="form.name">名称</span>
       <span class="iconGroup">
-        <font-awesome-icon class="circle-button cursorPointer" :icon="['fas', 'compress']"/>
-        <font-awesome-icon class="circle-button cursorPointer" :icon="['fas', 'times']"/>
+        <font-awesome-icon
+          class="circle-button cursorPointer"
+          :icon="['fas', 'compress']"
+          @click="toggleFullScreen"
+        />
+        <font-awesome-icon
+          class="circle-button cursorPointer"
+          :icon="['fas', 'times']"
+          @click="close"
+        />
       </span>
     </div>
   </div>
@@ -25,12 +34,19 @@ export default {
   name: 'CheckItem',
   data () {
     return {
+      isFullScreen: false,
       form: {}
     }
   },
   methods: {
     stopProp () {
 
+    },
+    toggleFullScreen () {
+      this.isFullScreen = !this.isFullScreen
+    },
+    close () {
+      this.$emit('click')
     }
   }
 }
@@ -51,6 +67,10 @@ export default {
   color: #303133;
   overflow: auto;
   /* z-index: 100; */
+}
+.fullScreen {
+  width: 100%;
+  padding-left: 100px;
 }
 .idStyle {
   color: #409EFF;
@@ -73,4 +93,3 @@ export default {
   padding-bottom: 20px;
 }
 </style>
-
