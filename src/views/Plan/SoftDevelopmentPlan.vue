@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-22 23:18:17
+ * @Last Modified time: 2018-10-23 17:04:35
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -19,7 +19,7 @@
               <el-form-item>
                 <el-button
                   type="primary" 
-                  @click="submitFile"
+                  @click="submitPlan"
                   round>
                   上传计划
                 </el-button>
@@ -120,14 +120,15 @@
               </template>
           </el-table-column>
         </el-table>
-        <div v-if="isShowItem">
+        <!-- <div v-if="isShowItem">
           <item></item>
-        </div>
+        </div> -->
         <el-dialog
           title="新建工作项"
           :visible.sync="dialogVisible"
-          width="70%">
-            <new-item v-if="showEditor"></new-item>
+          width="70%"
+        >
+          <new-item v-if="showEditor"></new-item>
         </el-dialog>
         <drawer :is-show="isCheckItem" @hideDrawer="hideDrawer"></drawer>
       </el-card>
@@ -165,46 +166,6 @@ export default {
           createTime: '2017-10-2',
           editor: '许文静',
           editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-2',
-          name: '软件开发计划2',
-          version: '1.0.3',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-3',
-          name: '软件开发计划3',
-          version: '1.0.2',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-4',
-          name: '软件开发计划4',
-          version: '1.0.1',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SDP-5',
-          name: '软件开发计划5',
-          version: '1.0.0',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
         }
       ]
     }
@@ -215,11 +176,13 @@ export default {
   methods: {
     getVersions () {
       // 向后台获取版本数据
+      console.log(123)
       axios.get(api.common.getVersions).then(res => {
-        this.versions = res.data.list
+        // this.versions = res.data.list
+        console.log(res)
       })
     },
-    submitFile () {
+    submitPlan () {
       // this.$router.go('/plan/developmentplan/submitFile')
       // this.$router.push({path: '#/home/plan/developmentplan/submitFile'})
       // this.$router.push({ path: 'developmentplan/submitFile' })
@@ -228,7 +191,12 @@ export default {
     handleEdit () {
       this.isCheckItem = true
     },
-    handleCheck () {},
+    handleCheck () {
+      axios.get('/api/common/versions').then(res => {
+        // this.versions = res.data.list
+        console.log(res)
+      })
+    },
     handleDelete () {},
     hideDrawer () {
       this.isCheckItem = false

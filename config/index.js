@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: { // 配置代理
-      // '/v2': {
-        // target: 'http://',  // 请求的第三方接口
-        // changeOrigin: true,
+      '/api': {
+        target: 'http://localhost:3000',  // 请求的第三方接口
+        changeOrigin: true
         // pathRewrite: {
         //   '^/v2': '/v2'
         // }
-      // }
+      }
     },
 
     // Various Dev Server settings

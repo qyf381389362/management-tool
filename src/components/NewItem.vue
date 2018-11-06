@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 15:13:32
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-24 15:13:59
+ * @Last Modified time: 2018-10-24 01:18:45
  * @Description: 新建工作项
  */
 
@@ -10,7 +10,7 @@
   <el-form :model="form" :rules="rules" ref="form">
     <el-row :gutter="30">
       <el-col :span="18">
-        <div>
+        <el-form-item prop="name">
           <el-input
             v-model="form.name"
             auto-complete="off"
@@ -18,8 +18,8 @@
             class="nameHolder"
           >
           </el-input>
-          <editor></editor>
-        </div>
+        </el-form-item>
+        <editor @editorContent="getEditorContent"></editor>
       </el-col>
       <el-col :span="6">
         <div class="mb10">
@@ -36,9 +36,9 @@
                 class="percentWidth_100">
                 <el-option
                   v-for="item in members"
-                  :key="item.id"
-                  :label="item.label"
-                  :value="item.id">
+                  :key="item.memberId"
+                  :label="item.name"
+                  :value="item.memberId">
                 </el-option>
               </el-select>
             </el-col>
@@ -50,11 +50,13 @@
               <span class="mt5">标识：</span>
             </el-col>
             <el-col :span="18">
-              <el-input
-                v-model="form.identification"
-                class="inline percentWidth_100"
-                size="medium">
-              </el-input>
+              <el-form-item prop="identification">
+                <el-input
+                  v-model="form.identification"
+                  class="inline percentWidth_100"
+                  size="medium">
+                </el-input>
+              </el-form-item>
             </el-col>
           </el-row>
         </div>
@@ -212,13 +214,13 @@
     <el-row class="mt20">
       <el-col :span="6" :offset="9">
         <el-button
-          type="primary" 
-          @click="save"
+          type="primary"
+          @click='save'
           round>
           &nbsp;&nbsp;保&nbsp;&nbsp;存&nbsp;&nbsp;
         </el-button>
         <el-button 
-          @click="console"
+          @click='cansole'
           round>
           &nbsp;&nbsp;取&nbsp;&nbsp;消&nbsp;&nbsp;
         </el-button>
@@ -228,6 +230,9 @@
   <!-- <editor></editor> -->
 </template>
 <script>
+import axios from '@/config/axios.config'
+import CONST from '@/util/CONST'
+// import api from '@/config/api'
 import Editor from './Editor'
 export default {
   name: 'newItem',
@@ -244,45 +249,38 @@ export default {
         startDate: '',
         endDate: '',
         manHour: '',
-        priority: '',
+        priority: 'low',
         importance: '',
         remarks: ''
       },
-      members: [
-        {
-          id: '001',
-          label: '秦雨霏'
-        },
-        {
-          id: '002',
-          label: '死胖子'
-        },
-        {
-          id: '003',
-          label: '王宇晟'
-        },
-        {
-          id: '004',
-          label: '许文静'
-        }
-      ],
-      importanceItems: [
-        {
-          code: '1',
-          label: '关键'
-        },
-        {
-          code: '2',
-          label: '重要'
-        },
-        {
-          code: '3',
-          label: '一般'
-        }
-      ]
+      members: [],
+      importanceItems: CONST.importance,
+      rules: {
+        name: [
+          { required: true, message: '请输入标题名称', trigger: 'blur' },
+          { max: 50, message: '长度不超过50个字符', trigger: 'blur' }
+        ],
+        creatorId: [
+          { required: true, message: '请输入创建人', trigger: 'change' }
+        ],
+        identification: [
+          { required: true, message: '请输入标识', trigger: 'blur' }
+        ]
+      }
     }
   },
+  mounted () {
+    this.getMembers()
+  },
   methods: {
+    getMembers () {
+      axios.get('/api/common/members').then(res => {
+        this.members = res.data
+      })
+    },
+    getEditorContent (editorContent) {
+      console.log(editorContent)
+    },
     save () {
       console.log('保存成功')
     },
@@ -292,6 +290,7 @@ export default {
   }
 }
 </script>
+
 <style>
 .nameHolder {
   margin-bottom: 20px;
@@ -299,7 +298,7 @@ export default {
 .datePicker .el-date-editor.el-input {
   width: 100%;
 }
-.upload-area .el-upload-dragger{
+.upload-area .el-upload-dragger {
   width: 100%;
   height: 120px;
 }
