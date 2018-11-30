@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-11 23:18:16
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-22 23:24:20
+ * @Last Modified time: 2018-11-30 14:49:28
  * @Description: 全屏遮罩层
  */
 <template>
@@ -53,5 +53,3 @@ export default {
   /* opacity: 0.6; */
 }
 </style>
-
-
