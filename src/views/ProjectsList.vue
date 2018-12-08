@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-09 20:08:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-06-29 20:59:15
+ * @Last Modified time: 2018-12-08 21:25:28
  */
 <!--项目列表和新建项目页面-->
 <template>
@@ -87,8 +87,8 @@
       <el-form :model="form" :rules="rules" ref="form">
         <el-row>
           <el-col :span="16">
-            <el-form-item label="项目名称" :label-width="formLabelWidth" prop="name">
-              <el-input v-model="form.name" auto-complete="off"></el-input>
+            <el-form-item label="项目名称" :label-width="formLabelWidth" prop="projectName">
+              <el-input v-model="form.projectName" auto-complete="off"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -108,39 +108,46 @@
         </el-form-item>
         <el-row>
           <el-col :span="18">
-            <el-form-item label="项目负责人" :label-width="formLabelWidth" prop="charge">
-              <el-select v-model="form.charge" filterable placeholder="请选择项目负责人">
-                <el-option label="秦雨霏" value="qinyufei"></el-option>
+            <el-form-item label="项目负责人" :label-width="formLabelWidth" prop="principal">
+              <el-select v-model="form.principal" filterable placeholder="请选择项目负责人">
+                <el-option
+                  v-for="item in members"
+                  :key="item.memberId"
+                  :label="item.name"
+                  :value="item.memberId">
+                </el-option>
               </el-select>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="18">
-            <el-form-item label="计划开始时间" :label-width="formLabelWidth" prop="startDate">
+            <el-form-item label="计划开始时间" :label-width="formLabelWidth" prop="startTime">
               <el-date-picker
-                v-model="form.startDate"
+                v-model="form.startTime"
                 type="date"
-                placeholder="选择计划开始时间"></el-date-picker>
+                placeholder="选择计划开始时间">
+              </el-date-picker>
             </el-form-item>
-            <el-form-item label="计划完成时间" :label-width="formLabelWidth" prop="endDate">
+            <el-form-item label="计划完成时间" :label-width="formLabelWidth" prop="endTime">
               <el-date-picker
-                v-model="form.endDate"
+                v-model="form.endTime"
                 type="date"
-                placeholder="选择计划完成时间"></el-date-picker>
+                placeholder="选择计划完成时间">
+              </el-date-picker>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="18">
             <el-form-item label="项目描述" :label-width="formLabelWidth">
-              <el-input type="textarea" v-model="form.desc"></el-input>
+              <el-input type="textarea" v-model="form.description"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="confirm('form')">新建并启动</el-button>
+        <el-button type="primary" @click="create('form')">新建并启动</el-button>
         <el-button @click="dialogFormVisible = false">取 消</el-button>
       </div>
     </el-dialog>
@@ -148,25 +155,26 @@
 </template>
 
 <script>
+import axios from '@/config/axios.config'
 export default {
   name: 'ProjectsList',
-  components: {
-  },
+  components: {},
   data () {
     return {
       dialogFormVisible: false,
+      members: [],
       form: {
-        name: '',
+        projectName: '',
         standard: '',
         level: '',
-        charge: '',
-        startDate: '',
-        endDate: '',
+        principal: '',
+        startTime: '',
+        endTime: '',
         description: ''
       },
       formLabelWidth: '120px',
       rules: {
-        name: [
+        projectName: [
           { required: true, message: '请输入项目名称', trigger: 'blur' },
           { max: 15, message: '长度不超过 15 个字符', trigger: 'blur' }
         ],
@@ -176,48 +184,66 @@ export default {
         level: [
           { required: true, message: '请选择软件等级', trigger: 'change' }
         ],
-        charge: [
+        principal: [
           { required: true, message: '请选择项目负责人', trigger: 'blur' }
         ],
-        startDate: [
+        startTime: [
           { type: 'date', required: true, message: '请选择计划开始时间', trigger: 'change' }
         ],
-        endDate: [
+        endTime: [
           { type: 'date', required: true, message: '请选择计划完成时间', trigger: 'change' }
         ]
       },
-      tableData: [{
-        date: '2017-05-02',
-        name: '项目1',
-        charge: '秦雨霏',
-        schedule: '软件计划阶段'
-      }, {
-        date: '2018-05-04',
-        name: '项目2',
-        charge: '秦雨霏',
-        schedule: '软件需求阶段'
-      }, {
-        date: '2017-05-01',
-        name: '项目3',
-        charge: '许文静',
-        schedule: '软件设计阶段'
-      }, {
-        date: '2016-05-03',
-        name: '项目4',
-        charge: '死胖子',
-        schedule: '完成'
-      }]
+      tableData: [
+        // {
+        //   date: '2017-05-02',
+        //   name: '项目1',
+        //   charge: '秦雨霏',
+        //   schedule: '软件计划阶段'
+        // }, {
+        //   date: '2018-05-04',
+        //   name: '项目2',
+        //   charge: '秦雨霏',
+        //   schedule: '软件需求阶段'
+        // }, {
+        //   date: '2017-05-01',
+        //   name: '项目3',
+        //   charge: '许文静',
+        //   schedule: '软件设计阶段'
+        // }, {
+        //   date: '2016-05-03',
+        //   name: '项目4',
+        //   charge: '死胖子',
+        //   schedule: '完成'
+        // }
+      ]
     }
   },
+  mounted () {
+    this.getMembers()
+  },
   methods: {
+    getMembers () {
+      axios.get('/api/common/members').then(res => {
+        this.members = res.data
+      })
+    },
     createProject () {
       this.dialogFormVisible = true
     },
-    confirm (formName) {
+    create (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.dialogFormVisible = false
-          this.$router.push({path: '/home/plan'})
+          // this.$router.push({path: '/home/plan'})
+          console.log(this.form, '表单字段值')
+          axios.post('/api/common/projects/create', {type: '234'})
+          .then(res => {
+            this.$router.push({path: '/home/plan'})
+          })
+          .catch((error) => {
+            console.log(error, '发生了错误')
+          })
         } else {
           return false
         }
