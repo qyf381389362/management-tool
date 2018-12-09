@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 08:16:01 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 10:54:09
+ * @Last Modified time: 2018-12-09 23:45:03
  */
 
 <!--系统需求页面-->
@@ -10,7 +10,7 @@
   <el-container>
     <el-main class="wrapper">
       <el-breadcrumb class="breadcrumb">
-        <el-breadcrumb-item :to="{path:'/home/develop'}">软件开发过程</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'systemRequirements'}">软件计划过程</el-breadcrumb-item>
         <el-breadcrumb-item>系统需求</el-breadcrumb-item>
       </el-breadcrumb>
       <el-card class="content">
@@ -28,7 +28,10 @@
             </el-col>
             <el-col :span="3" :offset="13">
               <el-form-item>
-                <el-select placeholder="请选择版本">
+                <el-select
+                  v-model="versions"
+                  placeholder="请选择版本"
+                >
                   <el-option label="1.0.0" value="1"></el-option>
                   <el-option label="1.0.1" value="2"></el-option>
                   <el-option label="1.0.2" value="3"></el-option>
@@ -109,6 +112,17 @@
       </el-card>
     </el-main>
     <el-dialog
+      title="新建工作项"
+      :visible.sync="addSRVisible"
+      width="70%"
+    >
+      <new-item
+        v-if="showEditor"
+        @save="save"
+        @cansole="cansole"
+      ></new-item>
+    </el-dialog>
+    <el-dialog
       title="审核信息"
       :visible.sync="dialogFormVisible"
       class="dialog"
@@ -144,15 +158,29 @@
         <el-button @click="dialogFormVisible = false">取 消</el-button>
       </div>
     </el-dialog>
+    <drawer :is-show="isCheckItem" @hideDrawer="hideDrawer"></drawer>
   </el-container>
 </template>
 <script>
+import axios from '@/config/axios.config'
+import api from '@/config/api'
+import NewItem from '../../components/NewItem'
+import Drawer from '../../components/Drawer'
+
 export default {
   name: 'SystemRequirements',
+  components: {
+    NewItem,
+    Drawer
+  },
   data () {
     return {
+      versions: [],
       form: {},
+      addSRVisible: false,
+      showEditor: true,
       dialogFormVisible: false,
+      isCheckItem: false,
       formLabelWidth: '120px',
       tableData: [
         {
@@ -203,16 +231,51 @@ export default {
     }
   },
   methods: {
+    getScmItems () {
+      console.log('获取配置项列表')
+    },
     addSystemRequirement: function () {
-      // this.$router.go('/plan/developmentplan/submitFile')
-      // this.$router.push({path: '#/home/plan/developmentplan/submitFile'})
-      this.$router.push({ path: 'addSystemRequirement' })
+      this.addSRVisible = true
+    },
+    hideDrawer () {
+      this.isCheckItem = false
     },
     handleEdit () {},
     handleCheck () {
       this.dialogFormVisible = true
     },
-    handleDelete () {}
+    handleDelete () {},
+    save (scmItem) {
+      let version = scmItem.version
+
+      console.log(scmItem, '弹出层传入的数据')
+      axios.post('/api/scmitems/create', scmItem)
+      .then(res => {
+        this.$message({
+          showClose: true,
+          message: '新建工作项成功',
+          type: 'success',
+          duration: 1500
+        })
+        this.addSRVisible = false
+        this.getScmItems()
+      })
+      .catch((error) => {
+        this.$message({
+          showClose: true,
+          message: '创建工作项失败',
+          type: 'error',
+          duration: 1500
+        })
+        console.log(error.message)
+      })
+    },
+    cansole () {
+      this.addSRVisible = false
+    },
+    confirm () {
+      console.log('确认发起审核')
+    }
   }
 }
 </script>

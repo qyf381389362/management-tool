@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-24 15:00:04
+ * @Last Modified time: 2018-12-09 19:55:09
  */
 
 <template>
@@ -44,34 +44,33 @@
           class="el-menu"
           unique-opened
           router>
-          <el-submenu index="/home/plan">
+          <el-submenu index="developmentplan">
             <template slot="title">
               <i class="el-icon-tickets"></i>
               <span>软件计划过程</span>
             </template>
-            <el-menu-item index="/home/plan/developmentplan">软件开发计划</el-menu-item>
-            <el-menu-item index="/home/plan/verificationplan">软件验证计划</el-menu-item>
-            <el-menu-item index="/home/plan/certificationplan">软件合格审定计划</el-menu-item>
-            <el-menu-item index="/home/plan/QAplan">软件质量保证计划</el-menu-item>
-            <el-menu-item index="/home/plan/SCMplan">软件配置管理计划</el-menu-item>
-            <el-menu-item index="/home/plan/demandStandard">软件需求标准</el-menu-item>
-            <el-menu-item index="/home/plan/designStandard">软件设计标准</el-menu-item>
-            <el-menu-item index="/home/plan/codingStandard">软件编码标准</el-menu-item>
+            <el-menu-item index="systemRequirements">系统需求</el-menu-item>
+            <el-menu-item index="developmentplan">软件开发计划</el-menu-item>
+            <el-menu-item index="verificationplan">软件验证计划</el-menu-item>
+            <el-menu-item index="certificationplan">软件合格审定计划</el-menu-item>
+            <el-menu-item index="QAplan">软件质量保证计划</el-menu-item>
+            <el-menu-item index="SCMplan">软件配置管理计划</el-menu-item>
+            <el-menu-item index="demandStandard">软件需求标准</el-menu-item>
+            <el-menu-item index="designStandard">软件设计标准</el-menu-item>
+            <el-menu-item index="codingStandard">软件编码标准</el-menu-item>
           </el-submenu>
-          <el-submenu
-            index="/home/develop"
-            :disabled='isPlanCompleted'>
+          <el-submenu index="develop/highLevelRequirements">
+            <!-- :disabled='isPlanCompleted' -->
             <template slot="title">
               <i class="el-icon-document"></i>
               <span>软件开发过程</span>
             </template>
-            <el-menu-item index="/home/develop/systemRequirements">系统需求</el-menu-item>
-            <el-menu-item index="/home/develop/highLevelRequirements">高层需求</el-menu-item>
-            <el-menu-item index="/home/develop/lowLevelRequirements">低层需求</el-menu-item>
-            <el-menu-item index="/home/develop/softwareStructure">软件架构</el-menu-item>
-            <el-menu-item index="/home/develop/softwareCoding">软件编码</el-menu-item>
-            <el-menu-item index="/home/develop/softwareCoding">软件集成</el-menu-item>
-            <el-menu-item index="/home/plan/problemReport">问题报告</el-menu-item>
+            <el-menu-item index="develop/highLevelRequirements">高层需求</el-menu-item>
+            <el-menu-item index="develop/lowLevelRequirements">低层需求</el-menu-item>
+            <el-menu-item index="develop/softwareStructure">软件架构</el-menu-item>
+            <el-menu-item index="develop/softwareCoding">软件编码</el-menu-item>
+            <el-menu-item index="develop/softwareCoding">软件集成</el-menu-item>
+            <el-menu-item index="plan/problemReport">问题报告</el-menu-item>
           </el-submenu>
           <el-submenu
             index="/home/test"
@@ -108,15 +107,19 @@
 <script>
 export default {
   name: 'HomePage',
-  components: {
-  },
+  components: {},
   data () {
     return {
       asideBar: [],
       activeIndex: '',
       isPlanCompleted: false,
-      isDevCompleted: false
+      isDevCompleted: false,
+      menuItemIndex: {}
     }
+  },
+  mounted () {
+    // console.log(this.$route.params.id, '路由')
+    console.log(this.$route.path, '路由')
   }
 }
 </script>

@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 14:59:38
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-10-22 22:58:15
+ * @Last Modified time: 2018-12-09 20:41:25
  * @Description: 项目路由管理
  */
 import Vue from 'vue'
@@ -10,6 +10,7 @@ import Router from 'vue-router'
 import Login from '@/views/Login'
 import HomePage from '@/views/HomePage'
 import ProjectsList from '@/views/ProjectsList'
+import SystemRequirements from '../views/Plan/SystemRequirements'
 import DevelopmentPlan from '../views/Plan/SoftDevelopmentPlan'
 import VerificationPlan from '../views/Plan/SoftwareVerificationPlan'
 import CertificationPlan from '../views/Plan/SoftCertificationPlan'
@@ -24,7 +25,6 @@ import CheckBaseLine from '../views/common/CheckBaseLine'
 import BaseLineList from '../views/common/BaseLineList'
 import ProblemReport from '../views/common/ProblemReport'
 import CheckSteps from '../views/common/CheckSteps'
-import SystemRequirements from '../views/Develop/SystemRequirements'
 import AddSystemRequirement from '../views/Develop/AddSystemRequirement'
 import HighLevelRequirements from '../views/Develop/HighLevelRequirements'
 import AddHighLevelRequirement from '../views/Develop/AddHighLevelRequirement'
@@ -58,22 +58,29 @@ export default new Router({
       component: Login
     },
     {
+      // 项目列表
       path: '/projects',
       component: ProjectsList
     },
     {
-      // 主页路由
-      path: '/home',
+      // 项目内容路由
+      path: '/project/:id',
       name: 'HomePage',
       component: HomePage,
       children: [
+        // {
+        //   path: 'plan',
+        //   name: 'Plan',
+        //   component: DevelopmentPlan
+        // },
+        // 软件计划部分的路由
         {
-          path: 'plan',
-          name: 'Plan',
-          component: DevelopmentPlan
+          path: 'systemRequirements',
+          name: 'SystemRequirements',
+          component: SystemRequirements
         },
         {
-          path: 'plan/developmentplan',
+          path: 'developmentplan',
           name: 'DevelopmentPlan',
           component: DevelopmentPlan
         },
@@ -83,42 +90,42 @@ export default new Router({
           component: SubmitFile
         },
         {
-          path: 'plan/verificationplan',
+          path: 'verificationplan',
           name: 'VerificationPlan',
           component: VerificationPlan
         },
         {
-          path: 'plan/certificationplan',
+          path: 'certificationplan',
           name: 'CertificationPlan',
           component: CertificationPlan
         },
         {
-          path: 'plan/QAplan',
+          path: 'QAplan',
           name: 'QAPlan',
           component: QAPlan
         },
         {
-          path: 'plan/SCMplan',
+          path: 'SCMplan',
           name: 'SCMPlan',
           component: SCMPlan
         },
         {
-          path: 'plan/designStandard',
+          path: 'designStandard',
           name: 'DesignStandard',
           component: DesignStandard
         },
         {
-          path: 'plan/codingStandard',
+          path: 'codingStandard',
           name: 'CodingStandard',
           component: CodingStandard
         },
         {
-          path: 'plan/demandStandard',
+          path: 'demandStandard',
           name: 'DemandStandard',
           component: DemandStandard
         },
         {
-          path: 'plan/createBaseLine',
+          path: 'createBaseLine',
           component: CreateBaseLine
         },
         {
@@ -126,7 +133,7 @@ export default new Router({
           component: CheckBaseLine
         },
         {
-          path: 'plan/problemReport',
+          path: 'problemReport',
           component: ProblemReport
         },
         {
@@ -134,16 +141,12 @@ export default new Router({
           name: 'BaseLineList',
           component: BaseLineList
         },
-        {
-          path: 'develop',
-          name: 'Develop',
-          component: SystemRequirements
-        },
-        {
-          path: 'develop/systemRequirements',
-          name: 'SystemRequirements',
-          component: SystemRequirements
-        },
+        // 软件开发部分的路由
+        // {
+        //   path: 'develop',
+        //   name: 'Develop',
+        //   component: SystemRequirements
+        // },
         {
           path: 'develop/addSystemRequirement',
           name: 'AddSystemRequirement',

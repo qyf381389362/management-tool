@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-08 22:32:31
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-08 23:13:49
+ * @Last Modified time: 2018-12-09 10:08:06
  */
 import axios from 'axios'
 import Qs from 'qs'
@@ -17,7 +17,6 @@ axios.interceptors.request.use((config) => {
   if (config.method === 'post') {
     config.data = Qs.stringify(config.data)
   }
-  console.log(config)
   return config
 }, (error) => {
   return Promise.reject(error)

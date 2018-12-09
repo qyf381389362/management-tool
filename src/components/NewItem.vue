@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 15:13:32
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-10-24 01:18:45
+ * @Last Modified time: 2018-12-10 00:01:46
  * @Description: 新建工作项
  */
 
@@ -10,16 +10,18 @@
   <el-form :model="form" :rules="rules" ref="form">
     <el-row :gutter="30">
       <el-col :span="18">
-        <el-form-item prop="name">
+        <el-form-item prop="title">
           <el-input
-            v-model="form.name"
+            v-model="form.title"
             auto-complete="off"
             placeholder="请输入标题名称"
             class="nameHolder"
           >
           </el-input>
         </el-form-item>
-        <editor @editorContent="getEditorContent"></editor>
+        <el-form-item prop="title">
+          <editor @editorContent="getEditorContent"></editor>
+        </el-form-item>
       </el-col>
       <el-col :span="6">
         <div class="mb10">
@@ -28,19 +30,22 @@
               <span class="mt5">创建人：</span>
             </el-col>
             <el-col :span="18">
-              <el-select
-                v-model="form.creatorId"
-                filterable
-                size="medium"
-                placeholder="请选择"
-                class="percentWidth_100">
-                <el-option
-                  v-for="item in members"
-                  :key="item.memberId"
-                  :label="item.name"
-                  :value="item.memberId">
-                </el-option>
-              </el-select>
+              <el-form-item prop="creator">
+                <el-select
+                  v-model="form.creator"
+                  filterable
+                  size="medium"
+                  placeholder="请选择"
+                  class="percentWidth_100"
+                >
+                  <el-option
+                    v-for="item in members"
+                    :key="item.memberId"
+                    :label="item.name"
+                    :value="item.memberId">
+                  </el-option>
+                </el-select>
+              </el-form-item>
             </el-col>
           </el-row>
         </div>
@@ -66,11 +71,13 @@
               <span class="mt5">版本：</span>
             </el-col>
             <el-col :span="18">
-              <el-input
-                v-model="form.version"
-                class="inline percentWidth_100"
-                size="medium">
-              </el-input>
+              <el-form-item prop="version">
+                <el-input
+                  v-model="form.version"
+                  class="inline percentWidth_100"
+                  size="medium"
+                ></el-input>
+              </el-form-item>
             </el-col>
           </el-row>
         </div>
@@ -83,7 +90,7 @@
               :span="18"
               class="datePicker">
               <el-date-picker
-                v-model="form.startDate"
+                v-model="form.startTime"
                 type="date"
                 placeholder="选择开始时间">
               </el-date-picker>
@@ -99,7 +106,7 @@
               :span="18"
               class="datePicker">
               <el-date-picker
-                v-model="form.endDate"
+                v-model="form.endTime"
                 type="date"
                 placeholder="选择结束时间">
               </el-date-picker>
@@ -115,7 +122,7 @@
               <el-row>
                 <el-col :span="18">
                   <el-input-number
-                    v-model="form.manHour"
+                    v-model="form.workingHours"
                     controls-position="right"
                     :min="1"
                   >
@@ -215,7 +222,7 @@
       <el-col :span="6" :offset="9">
         <el-button
           type="primary"
-          @click='save'
+          @click="save('form')"
           round>
           &nbsp;&nbsp;保&nbsp;&nbsp;存&nbsp;&nbsp;
         </el-button>
@@ -234,6 +241,7 @@ import axios from '@/config/axios.config'
 import CONST from '@/util/CONST'
 // import api from '@/config/api'
 import Editor from './Editor'
+
 export default {
   name: 'newItem',
   components: {
@@ -242,29 +250,32 @@ export default {
   data () {
     return {
       form: {
-        name: '',
-        creatorId: '',
+        title: '',
+        creator: '',
         identification: '',
         version: '',
-        startDate: '',
-        endDate: '',
-        manHour: '',
+        startTime: '',
+        endTime: '',
+        workingHours: '',
         priority: 'low',
         importance: '',
         remarks: ''
       },
       members: [],
-      importanceItems: CONST.importance,
+      importanceItems: CONST.IMPORTANCE,
       rules: {
-        name: [
+        title: [
           { required: true, message: '请输入标题名称', trigger: 'blur' },
-          { max: 50, message: '长度不超过50个字符', trigger: 'blur' }
+          { max: 100, message: '长度不超过100个字符', trigger: 'blur' }
         ],
-        creatorId: [
+        creator: [
           { required: true, message: '请输入创建人', trigger: 'change' }
         ],
         identification: [
           { required: true, message: '请输入标识', trigger: 'blur' }
+        ],
+        version: [
+          { required: true, message: '请输入版本', trigger: 'blur' }
         ]
       }
     }
@@ -281,11 +292,17 @@ export default {
     getEditorContent (editorContent) {
       console.log(editorContent)
     },
-    save () {
-      console.log('保存成功')
+    save (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$emit('save', this.form)
+        } else {
+          return false
+        }
+      })
     },
     cansole () {
-      console.log('取消')
+      this.$emit('cansole')
     }
   }
 }

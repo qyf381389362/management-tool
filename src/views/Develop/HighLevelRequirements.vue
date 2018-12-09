@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 08:17:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-10 11:20:19
+ * @Last Modified time: 2018-12-09 20:29:44
  */
 
 <!--高层需求页面-->
@@ -21,14 +21,18 @@
               <el-button
                 type="primary" 
                 @click="addHLR"
-                round>
+                round
+              >
                 添加高层需求
               </el-button>
               </el-form-item>
             </el-col>
             <el-col :span="3" :offset="13">
               <el-form-item>
-                <el-select placeholder="请选择版本">
+                <el-select
+                  v-model="version"
+                  placeholder="请选择版本"
+                >
                   <el-option label="1.0.0" value="1"></el-option>
                   <el-option label="1.0.1" value="2"></el-option>
                   <el-option label="1.0.2" value="3"></el-option>
@@ -38,9 +42,10 @@
             </el-col>
             <el-col :span="5">
               <el-form-item>
-                <el-input 
+                <el-input
                   placeholder="请输入内容"
-                  prefix-icon="el-icon-search">
+                  prefix-icon="el-icon-search"
+                >
                 </el-input>
               </el-form-item>
             </el-col>
@@ -151,6 +156,7 @@ export default {
   name: 'HighLevelRequirements',
   data () {
     return {
+      version: [],
       form: {
         aditor: [],
         endDate: '',
@@ -205,6 +211,7 @@ export default {
     handleCheck () {
       this.dialogFormVisible = true
     },
+    confirm () {},
     handleDelete () {}
   }
 }

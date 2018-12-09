@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:32:50 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-10-23 17:04:35
+ * @Last Modified time: 2018-12-09 20:58:01
  */
 <!--软件计划过程之软件开发计划页面-->
 <template>
@@ -139,13 +139,14 @@
 import axios from '@/config/axios.config'
 import api from '@/config/api'
 import NewItem from '../../components/NewItem'
-import Item from '../../components/Item'
+// import Item from '../../components/Item'
 import Drawer from '../../components/Drawer'
+
 export default {
   name: 'DevelopmentPlan',
   components: {
     NewItem,
-    Item,
+    // Item,
     Drawer
   },
   data () {
@@ -176,11 +177,6 @@ export default {
   methods: {
     getVersions () {
       // 向后台获取版本数据
-      console.log(123)
-      axios.get(api.common.getVersions).then(res => {
-        // this.versions = res.data.list
-        console.log(res)
-      })
     },
     submitPlan () {
       // this.$router.go('/plan/developmentplan/submitFile')

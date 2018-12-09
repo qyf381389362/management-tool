@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-09 20:08:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-08 21:25:28
+ * @Last Modified time: 2018-12-09 22:06:44
  */
 <!--项目列表和新建项目页面-->
 <template>
@@ -33,19 +33,19 @@
             style="width: 100%">
             <el-table-column label="项目名称">
               <template slot-scope="scope">
-                <span style="margin-left: 10px">{{ scope.row.name }}</span>
+                <span style="margin-left: 10px">{{ scope.row.projectName }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="创建日期">
+            <el-table-column label="开始日期">
               <template slot-scope="scope">
                 <i class="el-icon-time"></i>
-                <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                <span style="margin-left: 10px">{{ scope.row.startTime }}</span>
               </template>
             </el-table-column>
             <el-table-column label="负责人">
               <template slot-scope="scope">
                 <font-awesome-icon :icon="['fas', 'user-tie']"/>
-                <span style="margin-left: 10px">{{ scope.row.charge }}</span>
+                <span style="margin-left: 10px">{{ scope.row.principal }}</span>
               </template>
             </el-table-column>
             <el-table-column label="进度">
@@ -54,9 +54,9 @@
                 <span style="margin-left: 10px">{{ scope.row.schedule }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="成员数">
+            <el-table-column label="项目等级">
               <template slot-scope="scope">
-                <span style="margin-left: 10px">{{ scope.row.members }}</span>
+                <span style="margin-left: 10px">{{ scope.row.standard }}—{{ scope.row.level }}级</span>
               </template>
             </el-table-column>
             <el-table-column label="工作项数">
@@ -156,6 +156,8 @@
 
 <script>
 import axios from '@/config/axios.config'
+import moment from 'moment'
+
 export default {
   name: 'ProjectsList',
   components: {},
@@ -194,33 +196,12 @@ export default {
           { type: 'date', required: true, message: '请选择计划完成时间', trigger: 'change' }
         ]
       },
-      tableData: [
-        // {
-        //   date: '2017-05-02',
-        //   name: '项目1',
-        //   charge: '秦雨霏',
-        //   schedule: '软件计划阶段'
-        // }, {
-        //   date: '2018-05-04',
-        //   name: '项目2',
-        //   charge: '秦雨霏',
-        //   schedule: '软件需求阶段'
-        // }, {
-        //   date: '2017-05-01',
-        //   name: '项目3',
-        //   charge: '许文静',
-        //   schedule: '软件设计阶段'
-        // }, {
-        //   date: '2016-05-03',
-        //   name: '项目4',
-        //   charge: '死胖子',
-        //   schedule: '完成'
-        // }
-      ]
+      tableData: []
     }
   },
   mounted () {
     this.getMembers()
+    this.getProjects()
   },
   methods: {
     getMembers () {
@@ -228,18 +209,29 @@ export default {
         this.members = res.data
       })
     },
+    getProjects () {
+      axios.get('/api/projects').then(res => {
+        res.data.forEach(row => {
+          this.members.forEach(member => {
+            if (member.memberId === row.principal) {
+              row.principal = member.name
+            }
+          })
+        })
+        this.tableData = res.data
+      })
+    },
     createProject () {
+      this.form = {}
       this.dialogFormVisible = true
     },
     create (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.dialogFormVisible = false
-          // this.$router.push({path: '/home/plan'})
-          console.log(this.form, '表单字段值')
-          axios.post('/api/common/projects/create', {type: '234'})
+          axios.post('/api/projects/create', this.form)
           .then(res => {
-            this.$router.push({path: '/home/plan'})
+            this.$router.push({path: '/project/' + res.data._id + '/systemRequirements'})
           })
           .catch((error) => {
             console.log(error, '发生了错误')
@@ -249,9 +241,29 @@ export default {
         }
       })
     },
-    handleEdit () {
+    handleEdit (index, row) {
+      this.$router.push({path: '/project/' + row._id + '/systemRequirements'})
     },
-    handleDelete () {
+    handleDelete (index, row) {
+      axios.delete('/api/projects/' + row._id)
+      .then(res => {
+        this.$message({
+          showClose: true,
+          message: '成功删除了一个项目',
+          type: 'success',
+          duration: 1500
+        })
+        this.getProjects()
+      })
+      .catch((error) => {
+        this.$message({
+          showClose: true,
+          message: '删除项目失败',
+          type: 'error',
+          duration: 1500
+        })
+        console.log(error.message)
+      })
     }
   }
 }
