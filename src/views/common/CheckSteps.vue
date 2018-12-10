@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-24 13:55:35 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-05-24 14:36:54
+ * @Last Modified time: 2018-12-10 21:46:38
  */
 <template>
   <el-container>
@@ -29,11 +29,9 @@
 <script>
 export default {
   name: 'CheckSteps',
-  components: {
-  },
+  components: {},
   data () {
-    return {
-    }
+    return {}
   }
 }
 </script>

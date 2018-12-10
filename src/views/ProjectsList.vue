@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-09 20:08:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-09 22:06:44
+ * @Last Modified time: 2018-12-10 17:22:59
  */
 <!--项目列表和新建项目页面-->
 <template>
@@ -230,12 +230,12 @@ export default {
         if (valid) {
           this.dialogFormVisible = false
           axios.post('/api/projects/create', this.form)
-          .then(res => {
-            this.$router.push({path: '/project/' + res.data._id + '/systemRequirements'})
-          })
-          .catch((error) => {
-            console.log(error, '发生了错误')
-          })
+            .then(res => {
+              this.$router.push({path: '/project/' + res.data._id + '/systemRequirements'})
+            })
+            .catch((error) => {
+              console.log(error, '发生了错误')
+            })
         } else {
           return false
         }
@@ -246,24 +246,24 @@ export default {
     },
     handleDelete (index, row) {
       axios.delete('/api/projects/' + row._id)
-      .then(res => {
-        this.$message({
-          showClose: true,
-          message: '成功删除了一个项目',
-          type: 'success',
-          duration: 1500
+        .then(res => {
+          this.$message({
+            showClose: true,
+            message: '成功删除了一个项目',
+            type: 'success',
+            duration: 1500
+          })
+          this.getProjects()
         })
-        this.getProjects()
-      })
-      .catch((error) => {
-        this.$message({
-          showClose: true,
-          message: '删除项目失败',
-          type: 'error',
-          duration: 1500
+        .catch((error) => {
+          this.$message({
+            showClose: true,
+            message: '删除项目失败',
+            type: 'error',
+            duration: 1500
+          })
+          console.log(error.message)
         })
-        console.log(error.message)
-      })
     }
   }
 }

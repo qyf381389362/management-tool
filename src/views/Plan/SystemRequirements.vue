@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 08:16:01 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-09 23:45:03
+ * @Last Modified time: 2018-12-10 20:15:17
  */
 
 <!--系统需求页面-->
@@ -26,16 +26,32 @@
               </el-button>
               </el-form-item>
             </el-col>
-            <el-col :span="3" :offset="13">
+            <el-col :span="3" :offset="10">
               <el-form-item>
                 <el-select
-                  v-model="versions"
+                  v-model="selectedVersions"
                   placeholder="请选择版本"
                 >
-                  <el-option label="1.0.0" value="1"></el-option>
-                  <el-option label="1.0.1" value="2"></el-option>
-                  <el-option label="1.0.2" value="3"></el-option>
-                  <el-option label="1.0.3" value="4"></el-option>
+                  <el-option
+                    v-for="version in versions"
+                    :key="version.id"
+                    :label="version.value"
+                    :value="version.id"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :span="3">
+              <el-form-item>
+                <el-select
+                  v-model="statuses"
+                  placeholder="请选择状态"
+                >
+                  <el-option label="全部" value="-1"></el-option>
+                  <el-option label="待审核" value="0"></el-option>
+                  <el-option label="审核不通过" value="1"></el-option>
+                  <el-option label="审核通过" value="2"></el-option>
+                  <el-option label="已发布" value="3"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
@@ -52,43 +68,51 @@
         <el-table 
           :data="tableData"
           stripe
-          style="width:100%">
+          style="width:100%"
+        >
           <el-table-column
-            prop="id"
-            label="标识">
-          </el-table-column>
+            prop="identification"
+            label="标识"
+          ></el-table-column>
           <el-table-column
-            prop="name"
-            label="名称">
-          </el-table-column>
+            prop="title"
+            label="名称"
+            ></el-table-column>
           <el-table-column
             prop="version"
-            label="当前版本">
+            label="当前版本"
+          ></el-table-column>
+          <el-table-column
+            prop="priority"
+            label="优先级"
+          ></el-table-column>
+          <el-table-column
+            prop="status"
+            label="状态"
+          >
+            <template slot-scope="scope">
+              <span v-if="scope.row.status === '待审核'" :style="{ color: color.normal }">{{ scope.row.status }}</span>
+              <span v-if="scope.row.status === '审核不通过'" :style="{ color: color.danger }">{{ scope.row.status }}</span>
+              <span v-if="scope.row.status === '审核通过'" :style="{ color: color.pass }">{{ scope.row.status }}</span>
+              <span v-if="scope.row.status === '已发布'" :style="{ color: color.done }">{{ scope.row.status }}</span>
+            </template>
           </el-table-column>
           <el-table-column
-            prop="period"
-            label="阶段">
-          </el-table-column>
+            prop="creator"
+            label="创建人"
+          ></el-table-column>
           <el-table-column
-            prop="state"
-            label="状态">
-          </el-table-column>
-          <el-table-column
-            prop="creater"
-            label="创建人">
-          </el-table-column>
-          <el-table-column
-            prop="createTime"
-            label="创建时间">
-          </el-table-column>
+            prop="startTime"
+            label="开始时间"
+          ></el-table-column>
           <el-table-column
             prop="editor"
-            label="编辑人">
-          </el-table-column>
+            label="编辑人"
+          ></el-table-column>
           <el-table-column
             prop="editTime"
-            label="编辑时间">
-          </el-table-column>
+            label="编辑时间"
+          ></el-table-column>
           <el-table-column
             label="操作"
             min-width="200"
@@ -118,6 +142,7 @@
     >
       <new-item
         v-if="showEditor"
+        :members="membersInArray"
         @save="save"
         @cansole="cansole"
       ></new-item>
@@ -131,13 +156,23 @@
         <el-row>
           <el-col :span="16">
             <el-form-item label="指定审核人" :label-width="formLabelWidth">
-              <el-input v-model="form.aditor" auto-complete="off"></el-input>
+              <el-select
+                v-model="form.aditor"
+                filterable
+              >
+                 <el-option
+                    v-for="member in membersInArray"
+                    :key="member.memberId"
+                    :label="member.name"
+                    :value="member.memberId"
+                  ></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="18">
-            <el-form-item label="计划完成时间" :label-width="formLabelWidth">
+            <el-form-item label="截止时间" :label-width="formLabelWidth">
               <el-date-picker
                 v-model="form.endDate"
                 type="date"
@@ -166,6 +201,7 @@ import axios from '@/config/axios.config'
 import api from '@/config/api'
 import NewItem from '../../components/NewItem'
 import Drawer from '../../components/Drawer'
+import CONST from '../../util/CONST'
 
 export default {
   name: 'SystemRequirements',
@@ -173,66 +209,75 @@ export default {
     NewItem,
     Drawer
   },
+  mounted () {
+    this.projectId = this.$route.params.id
+    this.getMembers()
+    this.getVersions()
+    this.getScmItems()
+  },
   data () {
     return {
+      projectId: '',
+      membersInArray: [],
+      members: {},
       versions: [],
+      selectedVersions: '',
+      statuses: [],
       form: {},
       addSRVisible: false,
       showEditor: true,
       dialogFormVisible: false,
       isCheckItem: false,
       formLabelWidth: '120px',
-      tableData: [
-        {
-          id: 'SRD-1',
-          name: '系统需求1',
-          version: '1.0.4',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SRD-2',
-          name: '系统需求2',
-          version: '1.0.3',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SRD-3',
-          name: '系统需求3',
-          version: '1.0.2',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        },
-        {
-          id: 'SRD-4',
-          name: '系统需求4',
-          version: '1.0.1',
-          period: '',
-          state: '未审核',
-          creater: '秦雨霏',
-          createTime: '2017-10-2',
-          editor: '许文静',
-          editTime: '2017-10-3'
-        }
-      ]
+      color: {
+        normal: CONST.COLOR.normal,
+        danger: CONST.COLOR.danger,
+        warn: CONST.COLOR.warn,
+        pass: CONST.COLOR.pass,
+        done: CONST.COLOR.done
+      },
+      tableData: []
     }
   },
   methods: {
+    getMembers () {
+      axios.get('/api/common/members').then(res => {
+        this.membersInArray = res.data
+        res.data.forEach(member => {
+          if (!this.members[member.memberId]) {
+            this.members[member.memberId] = member.name
+          }
+        })
+      })
+    },
+    getVersions () {
+      this.versions = [
+        {
+          projectId: this.projectId,
+          id: '-1',
+          value: '全部'
+        }
+      ]
+      axios.get('/api/common/versions/' + this.projectId).then(res => {
+        let finalVersions = this.versions.concat(res.data)
+        this.versions = finalVersions
+      })
+    },
     getScmItems () {
-      console.log('获取配置项列表')
+      axios.get('/api/scmitems/' + this.projectId).then(res => {
+        res.data.forEach(row => {
+          // 将人员信息的code值转换为中文名字
+          row.creator = this.members[row.creator]
+          row.priority = CONST.PRIORITY[row.priority]
+          // 将状态code码改为name值
+          CONST.STATUS.forEach(status => {
+            if (status.code === row.status) {
+              row.status = status.name
+            }
+          })
+        })
+        this.tableData = res.data
+      })
     },
     addSystemRequirement: function () {
       this.addSRVisible = true
@@ -244,11 +289,57 @@ export default {
     handleCheck () {
       this.dialogFormVisible = true
     },
-    handleDelete () {},
+    handleDelete (index, row) {
+      // console.log(row._id)
+      axios.delete('/api/scmitems/' + row._id)
+        .then(res => {
+          this.$message({
+            showClose: true,
+            message: '成功删除了一个工作项',
+            type: 'success',
+            duration: 1500
+          })
+          this.getScmItems()
+        })
+        .catch((error) => {
+          this.$message({
+            showClose: true,
+            message: '删除失败',
+            type: 'error',
+            duration: 1500
+          })
+          console.log(error.message)
+        })
+    },
     save (scmItem) {
-      let version = scmItem.version
+      let scmVersion = scmItem.version
+      let isVersionExisted = false
 
-      console.log(scmItem, '弹出层传入的数据')
+      this.versions.forEach(version => {
+        if (version.id === scmVersion) {
+          isVersionExisted = true
+        }
+      })
+      if (!isVersionExisted) {
+        let versionToPost = {
+          projectId: this.projectId,
+          id: scmVersion,
+          value: scmVersion
+        }
+        axios.post('/api/common/versions/create', versionToPost)
+          .then(res => {
+            return true
+          })
+          .catch((error) => {
+            console.log(error, '发生了错误')
+          })
+      }
+
+      scmItem.projectId = this.projectId
+      scmItem.type = '系统需求'
+      scmItem.status = 0
+
+      // console.log(scmItem, '弹出层传入的数据')
       axios.post('/api/scmitems/create', scmItem)
       .then(res => {
         this.$message({
@@ -258,6 +349,7 @@ export default {
           duration: 1500
         })
         this.addSRVisible = false
+        this.getVersions()
         this.getScmItems()
       })
       .catch((error) => {

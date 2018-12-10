@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 15:13:32
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-10 00:01:46
+ * @Last Modified time: 2018-12-10 17:08:46
  * @Description: 新建工作项
  */
 
@@ -19,7 +19,7 @@
           >
           </el-input>
         </el-form-item>
-        <el-form-item prop="title">
+        <el-form-item>
           <editor @editorContent="getEditorContent"></editor>
         </el-form-item>
       </el-col>
@@ -143,17 +143,20 @@
             <el-col :span="18">
               <el-radio
                 v-model="form.priority"
-                label="low">
+                label="0"
+              >
                 低
               </el-radio>
               <el-radio
                 v-model="form.priority"
-                label="medium">
+                label="1"
+              >
                 中
               </el-radio>
               <el-radio
                 v-model="form.priority"
-                label="high">
+                label="2"
+              >
                 高
               </el-radio>
             </el-col>
@@ -223,12 +226,14 @@
         <el-button
           type="primary"
           @click="save('form')"
-          round>
+          round
+        >
           &nbsp;&nbsp;保&nbsp;&nbsp;存&nbsp;&nbsp;
         </el-button>
-        <el-button 
+        <el-button
           @click='cansole'
-          round>
+          round
+        >
           &nbsp;&nbsp;取&nbsp;&nbsp;消&nbsp;&nbsp;
         </el-button>
       </el-col>
@@ -247,10 +252,12 @@ export default {
   components: {
     Editor
   },
+  props: ['members'],
   data () {
     return {
       form: {
         title: '',
+        content: '',
         creator: '',
         identification: '',
         version: '',
@@ -261,7 +268,6 @@ export default {
         importance: '',
         remarks: ''
       },
-      members: [],
       importanceItems: CONST.IMPORTANCE,
       rules: {
         title: [
@@ -281,16 +287,17 @@ export default {
     }
   },
   mounted () {
-    this.getMembers()
+    // this.getMembers()
   },
   methods: {
-    getMembers () {
-      axios.get('/api/common/members').then(res => {
-        this.members = res.data
-      })
-    },
+    // getMembers () {
+    //   axios.get('/api/common/members').then(res => {
+    //     this.members = res.data
+    //   })
+    // },
     getEditorContent (editorContent) {
-      console.log(editorContent)
+      let content = editorContent
+      this.form.content = content
     },
     save (formName) {
       this.$refs[formName].validate((valid) => {
@@ -302,6 +309,7 @@ export default {
       })
     },
     cansole () {
+      this.form = {}
       this.$emit('cansole')
     }
   }

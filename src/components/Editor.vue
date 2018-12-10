@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-07-04 23:21:35 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-10-24 02:06:15
+ * @Last Modified time: 2018-12-10 09:44:27
  */
 
 <template>
@@ -26,9 +26,11 @@
     methods: {},
     mounted () {
       let editor = new E(this.$refs.toolbar, this.$refs.text)
-      editor.customConfig.onchange = () => {
-        // this.editorContent = html // 获取html格式
-        this.editorContent = editor.txt.text()
+      // let textArea = document.getElementById('text1')
+      editor.customConfig.onchange = (html) => {
+        this.editorContent = html // 获取html格式
+        // this.editorContent = editor.txt.text()
+        // textArea.innerHTML = this.editorContent
         this.$emit('editorContent', this.editorContent)
       }
       editor.customConfig.onchangeTimeout = 1000 // 单位 ms
