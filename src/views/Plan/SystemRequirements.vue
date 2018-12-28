@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 08:16:01 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-10 20:15:17
+ * @Last Modified time: 2018-12-12 21:54:37
  */
 
 <!--系统需求页面-->
@@ -241,7 +241,7 @@ export default {
   },
   methods: {
     getMembers () {
-      axios.get('/api/common/members').then(res => {
+      axios.get('/api/common/members/' + this.projectId).then(res => {
         this.membersInArray = res.data
         res.data.forEach(member => {
           if (!this.members[member.memberId]) {

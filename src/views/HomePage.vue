@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-10 21:45:11
+ * @Last Modified time: 2018-12-12 01:57:32
  */
 
 <template>
@@ -27,6 +27,7 @@
         <el-menu-item class="menuItem" index="checkSteps">项目进度</el-menu-item>
         <el-submenu class="menuItem" index="2">
           <template slot="title">我的</template>
+          <el-menu-item index="myCheckList">我的待办</el-menu-item>
           <el-menu-item index="myCheckList">我的核查</el-menu-item>
           <el-menu-item index="myReviewList">我的评审</el-menu-item>
         </el-submenu>

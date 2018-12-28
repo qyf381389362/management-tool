@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-24 13:55:35 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-10 21:46:38
+ * @Last Modified time: 2018-12-12 02:00:44
  */
 <template>
   <el-container>
@@ -20,6 +20,7 @@
             <el-step title="软件开发过程" description=""></el-step>
             <el-step title="软件综合过程" description=""></el-step>
             <el-step title="软件测试" description="对开发的软件进行综合测试"></el-step>
+            <el-step title="完成总结" description="对开发的软件进行综合测试"></el-step>
           </el-steps>
         </div>
       </el-card>

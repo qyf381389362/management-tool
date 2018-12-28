@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-09 20:08:13 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-10 17:22:59
+ * @Last Modified time: 2018-12-14 02:27:18
  */
 <!--项目列表和新建项目页面-->
 <template>
@@ -64,15 +64,31 @@
                 <span style="margin-left: 10px">{{ scope.row.workItems }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="操作" align="center">
+            <el-table-column
+              label="操作"
+              min-width="200"
+              align="center"
+            >
               <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+                  @click="handleEdit(scope.$index, scope.row)"
+                >
+                  查看
+                </el-button>
+                <el-button
+                  size="mini"
+                  type="primary"
+                >
+                  修改
+                </el-button>
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                  @click="handleDelete(scope.$index, scope.row)"
+                >
+                  删除
+                </el-button>
               </template>
             </el-table-column>
           </el-table>

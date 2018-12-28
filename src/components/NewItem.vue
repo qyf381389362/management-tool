@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 15:13:32
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-10 17:08:46
+ * @Last Modified time: 2018-12-12 22:04:46
  * @Description: 新建工作项
  */
 
@@ -209,11 +209,13 @@
             <el-col :span="18">
               <el-upload
                 class="upload-area"
+                ref="upload"
                 drag
                 action=""
-                multiple>
-                <i class="el-icon-upload"></i>
-                <div>将文件拖到此处，或<em>点击上传</em></div>
+                :auto-upload="false"
+              >
+                <!-- <i class="el-icon-upload"></i> -->
+                <el-button slot="trigger" size="small">选取文件</el-button>
                 <div slot="tip">只能上传pdf文件，且不超过50M</div>
               </el-upload>
             </el-col>

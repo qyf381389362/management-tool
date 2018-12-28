@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 14:59:38
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-09 20:41:25
+ * @Last Modified time: 2018-12-14 02:55:39
  * @Description: 项目路由管理
  */
 import Vue from 'vue'
@@ -25,6 +25,7 @@ import CheckBaseLine from '../views/common/CheckBaseLine'
 import BaseLineList from '../views/common/BaseLineList'
 import ProblemReport from '../views/common/ProblemReport'
 import CheckSteps from '../views/common/CheckSteps'
+import Task from '../views/common/task'
 import AddSystemRequirement from '../views/Develop/AddSystemRequirement'
 import HighLevelRequirements from '../views/Develop/HighLevelRequirements'
 import AddHighLevelRequirement from '../views/Develop/AddHighLevelRequirement'
@@ -254,6 +255,11 @@ export default new Router({
           path: 'wiki',
           name: 'wiki',
           component: Wiki
+        },
+        {
+          path: 'task',
+          name: 'task',
+          component: Task
         }
       ]
     },
