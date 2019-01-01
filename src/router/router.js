@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 14:59:38
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-14 02:55:39
+ * @Last Modified time: 2019-01-01 01:54:57
  * @Description: 项目路由管理
  */
 import Vue from 'vue'
@@ -50,14 +50,18 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/',
+    //   component: Login
+    // },
     {
       path: '/',
-      component: Login
+      component: ProjectsList
     },
-    {
-      path: '/login',
-      component: Login
-    },
+    // {
+    //   path: '/login',
+    //   component: Login
+    // },
     {
       // 项目列表
       path: '/projects',

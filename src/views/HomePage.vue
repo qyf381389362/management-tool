@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-12 01:57:32
+ * @Last Modified time: 2019-01-01 02:44:00
  */
 
 <template>
@@ -24,7 +24,7 @@
           <el-menu-item index="/home/baseLineList">基线列表</el-menu-item>
         </el-submenu>
         <el-menu-item class="menuItem" index="/projects">项目列表</el-menu-item>
-        <el-menu-item class="menuItem" index="checkSteps">项目进度</el-menu-item>
+        <!-- <el-menu-item class="menuItem" index="checkSteps">项目进度</el-menu-item> -->
         <el-submenu class="menuItem" index="2">
           <template slot="title">我的</template>
           <el-menu-item index="myCheckList">我的待办</el-menu-item>
@@ -73,7 +73,7 @@
             <el-menu-item index="develop/softwareCoding">软件集成</el-menu-item>
             <el-menu-item index="plan/problemReport">问题报告</el-menu-item>
           </el-submenu>
-          <el-submenu
+          <!-- <el-submenu
             index="/home/test"
             :disabled='isDevCompleted'>
             <template slot="title">
@@ -82,19 +82,19 @@
             </template>
             <el-menu-item index="/home/test/testCaseManagement">用例管理</el-menu-item>
             <el-menu-item index="/home/test/testOverview">测试总览</el-menu-item>
-          </el-submenu>
+          </el-submenu> -->
           <el-menu-item index="/home/authority">
             <template slot="title">
               <i class="el-icon-menu"></i>
-              <span>权限管理</span>
+              <span>用户管理</span>
             </template>
           </el-menu-item>
-          <el-menu-item index="/home/wiki">
+          <!-- <el-menu-item index="/home/wiki">
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>Wiki</span>
             </template>
-          </el-menu-item>
+          </el-menu-item> -->
         </el-menu>
       </el-aside>
       <!-- 内容区域 -->
