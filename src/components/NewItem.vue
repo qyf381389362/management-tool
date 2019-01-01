@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 15:13:32
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-12 22:04:46
+ * @Last Modified time: 2019-01-02 03:37:01
  * @Description: 新建工作项
  */
 
@@ -201,7 +201,7 @@
             </el-col>
           </el-row>
         </div>
-        <div class="mb10">
+        <!-- <div class="mb10">
           <el-row>
             <el-col :span="6">
               <span class="mt5">上传附件：</span>
@@ -214,13 +214,13 @@
                 action=""
                 :auto-upload="false"
               >
-                <!-- <i class="el-icon-upload"></i> -->
+                <i class="el-icon-upload"></i>
                 <el-button slot="trigger" size="small">选取文件</el-button>
                 <div slot="tip">只能上传pdf文件，且不超过50M</div>
               </el-upload>
             </el-col>
           </el-row>
-        </div>
+        </div> -->
       </el-col>
     </el-row>
     <el-row class="mt20">

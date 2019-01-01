@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-22 19:34:57
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-24 16:43:46
+ * @Last Modified time: 2019-01-02 03:45:19
  * @Description: 当点击查看时弹出的查看列表项具体内容的模块
  */
 <template>
@@ -39,12 +39,12 @@
           <el-tab-pane label="关联工作项" name="relatedItems">
             关联工作项 
           </el-tab-pane>
-          <el-tab-pane label="关联WIKI" name="relatedWIKI">
+          <!-- <el-tab-pane label="关联WIKI" name="relatedWIKI">
             关联WIKI
-          </el-tab-pane>
-          <el-tab-pane label="关联测试用例" name="relatedTestItems">
+          </el-tab-pane> -->
+          <!-- <el-tab-pane label="关联测试用例" name="relatedTestItems">
             关联测试用例
-          </el-tab-pane>
+          </el-tab-pane> -->
           <!-- <el-tab-pane label="操作历史" name="relatedWIKI">
 
           </el-tab-pane> -->
@@ -74,7 +74,7 @@ export default {
       this.isFullScreen = !this.isFullScreen
     },
     close () {
-      this.$emit('click')
+      this.$emit('closeCheckItem')
     }
   }
 }

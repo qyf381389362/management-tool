@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-24 14:59:38
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2019-01-01 01:54:57
+ * @Last Modified time: 2019-01-02 03:33:18
  * @Description: 项目路由管理
  */
 import Vue from 'vue'
@@ -34,6 +34,7 @@ import AddLowLevelRequirement from '../views/Develop/AddLowLevelRequirement'
 import SoftwareStructure from '../views/Develop/SoftwareStructure'
 import AddSoftwareStructure from '../views/Develop/AddSoftwareStructure'
 import SoftwareCoding from '../views/Develop/SoftwareCoding'
+import SoftwareIntegration from '../views/Develop/SoftwareIntegration'
 import AddSoftwareCoding from '../views/Develop/AddSoftwareCoding'
 import MyCheckList from '../views/Specialist/MyCheckList'
 import CheckItem from '../views/Specialist/CheckItem'
@@ -158,7 +159,7 @@ export default new Router({
           component: AddSystemRequirement
         },
         {
-          path: 'develop/highLevelRequirements',
+          path: 'highLevelRequirements',
           name: 'HighLevelRequirements',
           component: HighLevelRequirements
         },
@@ -168,7 +169,7 @@ export default new Router({
           component: AddHighLevelRequirement
         },
         {
-          path: 'develop/lowLevelRequirements',
+          path: 'lowLevelRequirements',
           name: 'LowLevelRequirements',
           component: LowLevelRequirements
         },
@@ -178,7 +179,7 @@ export default new Router({
           component: AddLowLevelRequirement
         },
         {
-          path: 'develop/softwareStructure',
+          path: 'softwareStructure',
           name: 'SoftwareStructure',
           component: SoftwareStructure
         },
@@ -188,9 +189,14 @@ export default new Router({
           component: AddSoftwareStructure
         },
         {
-          path: 'develop/softwareCoding',
+          path: 'softwareCoding',
           name: 'SoftwareCoding',
           component: SoftwareCoding
+        },
+        {
+          path: 'softwareIntegration',
+          name: 'SoftwareIntegration',
+          component: SoftwareIntegration
         },
         {
           path: 'develop/addSoftwareCoding',

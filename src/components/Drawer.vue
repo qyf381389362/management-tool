@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-07-11 23:18:16
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-11-30 14:49:28
+ * @Last Modified time: 2019-01-02 03:47:12
  * @Description: 全屏遮罩层
  */
 <template>
@@ -11,7 +11,7 @@
     class="drawerWrapper"
     @click="hide"
   >
-    <check-item></check-item>
+    <check-item @closeCheckItem="closeCheckItem"></check-item>
   </div>
 </template>
 <script>
@@ -32,6 +32,9 @@ export default {
   methods: {
     hide () {
       this.$emit('hideDrawer')
+    },
+    closeCheckItem () {
+      this.hide()
     }
   },
   mounted () {

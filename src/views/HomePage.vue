@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-03-02 16:33:03 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2019-01-01 02:44:00
+ * @Last Modified time: 2019-01-02 03:39:41
  */
 
 <template>
@@ -60,18 +60,18 @@
             <el-menu-item index="designStandard">软件设计标准</el-menu-item>
             <el-menu-item index="codingStandard">软件编码标准</el-menu-item>
           </el-submenu>
-          <el-submenu index="develop/highLevelRequirements">
+          <el-submenu index="highLevelRequirements">
             <!-- :disabled='isPlanCompleted' -->
             <template slot="title">
               <i class="el-icon-document"></i>
               <span>软件开发过程</span>
             </template>
-            <el-menu-item index="develop/highLevelRequirements">高层需求</el-menu-item>
-            <el-menu-item index="develop/lowLevelRequirements">低层需求</el-menu-item>
-            <el-menu-item index="develop/softwareStructure">软件架构</el-menu-item>
-            <el-menu-item index="develop/softwareCoding">软件编码</el-menu-item>
-            <el-menu-item index="develop/softwareCoding">软件集成</el-menu-item>
-            <el-menu-item index="plan/problemReport">问题报告</el-menu-item>
+            <el-menu-item index="highLevelRequirements">高层需求</el-menu-item>
+            <el-menu-item index="lowLevelRequirements">低层需求</el-menu-item>
+            <el-menu-item index="softwareStructure">软件架构</el-menu-item>
+            <el-menu-item index="softwareCoding">软件编码</el-menu-item>
+            <el-menu-item index="softwareIntegration">软件集成</el-menu-item>
+            <el-menu-item index="problemReport">问题报告</el-menu-item>
           </el-submenu>
           <!-- <el-submenu
             index="/home/test"
@@ -83,7 +83,7 @@
             <el-menu-item index="/home/test/testCaseManagement">用例管理</el-menu-item>
             <el-menu-item index="/home/test/testOverview">测试总览</el-menu-item>
           </el-submenu> -->
-          <el-menu-item index="/home/authority">
+          <el-menu-item index="authority">
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>用户管理</span>

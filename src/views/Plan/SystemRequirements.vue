@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 08:16:01 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-12 21:54:37
+ * @Last Modified time: 2019-01-02 06:14:59
  */
 
 <!--系统需求页面-->
@@ -285,7 +285,29 @@ export default {
     hideDrawer () {
       this.isCheckItem = false
     },
-    handleEdit () {},
+    handleEdit () {
+      // this.isCheckItem = true
+      axios(
+        {
+          method: 'get',
+          url: '/api/common/exportWord',
+          responseType: 'blob'
+        }
+      ).then(res => {
+        // console.log(res)
+        // 这里res.data是返回的blob对象
+        // application/vnd.openxmlformats-officedocument.wordprocessingml.document这里表示doc类型
+        let blob = new Blob([res.data], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document;charset=utf-8'})
+        let downloadElement = document.createElement('a')
+        let href = window.URL.createObjectURL(blob) // 创建下载的链接
+        downloadElement.href = href
+        downloadElement.download = 'test' + '.docx' // 下载后文件名
+        document.body.appendChild(downloadElement)
+        downloadElement.click() // 点击下载
+        document.body.removeChild(downloadElement) // 下载完成移除元素
+        window.URL.revokeObjectURL(href) // 释放掉blob对象
+      })
+    },
     handleCheck () {
       this.dialogFormVisible = true
     },
