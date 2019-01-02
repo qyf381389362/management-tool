@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-07-04 23:21:35 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-12-10 09:44:27
+ * @Last Modified time: 2019-01-02 12:28:12
  */
 
 <template>
@@ -18,6 +18,7 @@
 
   export default {
     name: 'editor',
+    props: ['content'],
     data () {
       return {
         editorContent: ''
@@ -25,7 +26,11 @@
     },
     methods: {},
     mounted () {
+      // console.log(this.content, '富文本编辑器的内容')
       let editor = new E(this.$refs.toolbar, this.$refs.text)
+      if (this.content) this.editorContent = this.content
+      // console.log(this.editorContent, '你猜')
+      // editor.txt.html(this.editorContent)
       // let textArea = document.getElementById('text1')
       editor.customConfig.onchange = (html) => {
         this.editorContent = html // 获取html格式
@@ -50,11 +55,12 @@
         'quote',  // 引用
         'image',  // 插入图片
         'table',  // 表格
-        'code',  // 插入代码
+        // 'code',  // 插入代码
         'undo',  // 撤销
         'redo'  // 重复
       ]
       editor.create()
+      editor.txt.html(this.editorContent)
     }
   }
 </script>

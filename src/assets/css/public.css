@@ -2,7 +2,7 @@
  * @Author: 秦雨霏
  * @Date: 2018-03-04 21:31:14 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2018-07-24 15:40:15
+ * @Last Modified time: 2019-01-02 12:49:29
  */
 * {
   margin:0;
@@ -71,5 +71,8 @@
 }
 .mb10 {
   margin-bottom: 10px;
+}
+.mb20 {
+  margin-bottom: 20px;
 }
 

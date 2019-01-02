@@ -2,7 +2,7 @@
  * @Author: 秦雨霏 
  * @Date: 2018-05-10 08:16:01 
  * @Last Modified by: 秦雨霏
- * @Last Modified time: 2019-01-02 06:14:59
+ * @Last Modified time: 2019-01-02 13:23:02
  */
 
 <!--系统需求页面-->
@@ -16,7 +16,7 @@
       <el-card class="content">
         <el-form :model="form">
           <el-row :gutter="20">
-            <el-col :span="3">
+            <el-col :span="4">
               <el-form-item>
               <el-button
                 type="primary" 
@@ -24,9 +24,16 @@
                 round>
                 添加系统需求
               </el-button>
+              <!-- <span
+                class="exportContainer cursorPointer"
+                @click="exportWord"
+              >
+                <font-awesome-icon class="fileExport circle-button" :icon="['fas', 'file-archive']"/>
+                <span>导出</span>
+              </span> -->
               </el-form-item>
             </el-col>
-            <el-col :span="3" :offset="10">
+            <el-col :span="3" :offset="9">
               <el-form-item>
                 <el-select
                   v-model="selectedVersions"
@@ -121,15 +128,31 @@
             <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                  @click="handleEdit(scope.$index, scope.row)"
+                >
+                  编辑
+                </el-button>
                 <el-button
                   size="mini"
                   type="primary"
-                  @click="handleCheck(scope.$index, scope.row)">审核</el-button>
+                  @click="handleCheck(scope.$index, scope.row)"
+                >
+                  审核
+                </el-button>
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                  @click="handleDelete(scope.$index, scope.row)"
+                >
+                  删除
+                </el-button>
+                <el-button
+                  size="mini"
+                  type="warning"
+                  @click="exportWord(scope.$index, scope.row)"
+                >
+                  导出
+                </el-button>
               </template>
           </el-table-column>
         </el-table>
@@ -193,7 +216,12 @@
         <el-button @click="dialogFormVisible = false">取 消</el-button>
       </div>
     </el-dialog>
-    <drawer :is-show="isCheckItem" @hideDrawer="hideDrawer"></drawer>
+    <drawer
+      :is-show="isCheckItem"
+      :singleScmItem="singleScmItem"
+      @hideDrawer="hideDrawer"
+      @update="update"
+    ></drawer>
   </el-container>
 </template>
 <script>
@@ -226,6 +254,7 @@ export default {
       form: {},
       addSRVisible: false,
       showEditor: true,
+      singleScmItem: {},
       dialogFormVisible: false,
       isCheckItem: false,
       formLabelWidth: '120px',
@@ -285,28 +314,13 @@ export default {
     hideDrawer () {
       this.isCheckItem = false
     },
-    handleEdit () {
-      // this.isCheckItem = true
-      axios(
-        {
-          method: 'get',
-          url: '/api/common/exportWord',
-          responseType: 'blob'
-        }
-      ).then(res => {
-        // console.log(res)
-        // 这里res.data是返回的blob对象
-        // application/vnd.openxmlformats-officedocument.wordprocessingml.document这里表示doc类型
-        let blob = new Blob([res.data], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document;charset=utf-8'})
-        let downloadElement = document.createElement('a')
-        let href = window.URL.createObjectURL(blob) // 创建下载的链接
-        downloadElement.href = href
-        downloadElement.download = 'test' + '.docx' // 下载后文件名
-        document.body.appendChild(downloadElement)
-        downloadElement.click() // 点击下载
-        document.body.removeChild(downloadElement) // 下载完成移除元素
-        window.URL.revokeObjectURL(href) // 释放掉blob对象
-      })
+    handleEdit (index, row) {
+      axios.get('/api/scmitems/single/' + row._id)
+        .then(res => {
+          // console.log(res.data)
+          this.singleScmItem = res.data[0]
+          this.isCheckItem = true
+        })
     },
     handleCheck () {
       this.dialogFormVisible = true
@@ -332,6 +346,28 @@ export default {
           })
           console.log(error.message)
         })
+    },
+    exportWord (index, row) {
+      axios(
+        {
+          method: 'get',
+          url: '/api/common/exportWord/' + row._id,
+          responseType: 'blob'
+        }
+      ).then(res => {
+        // console.log(res)
+        // 这里res.data是返回的blob对象
+        // application/vnd.openxmlformats-officedocument.wordprocessingml.document这里表示doc类型
+        let blob = new Blob([res.data], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document;charset=utf-8'})
+        let downloadElement = document.createElement('a')
+        let href = window.URL.createObjectURL(blob) // 创建下载的链接
+        downloadElement.href = href
+        downloadElement.download = `${row.title}.docx` // 下载后文件名
+        document.body.appendChild(downloadElement)
+        downloadElement.click() // 点击下载
+        document.body.removeChild(downloadElement) // 下载完成移除元素
+        window.URL.revokeObjectURL(href) // 释放掉blob对象
+      })
     },
     save (scmItem) {
       let scmVersion = scmItem.version
@@ -384,6 +420,28 @@ export default {
         console.log(error.message)
       })
     },
+    update (scmItem) {
+      // console.log(scmItem, '传出来的值')
+      axios.post('/api/scmitems/update/' + scmItem._id, scmItem)
+        .then(res => {
+          this.$message({
+            showClose: true,
+            message: '修改工作项成功',
+            type: 'success',
+            duration: 1500
+          })
+          this.isCheckItem = false
+        })
+        // .catch((error) => {
+        //   this.$message({
+        //     showClose: true,
+        //     message: '修改工作项失败',
+        //     type: 'error',
+        //     duration: 1500
+        //   })
+        //   this.isCheckItem = false
+        // })
+    },
     cansole () {
       this.addSRVisible = false
     },
@@ -394,5 +452,21 @@ export default {
 }
 </script>
 <style scoped>
-  
+.exportContainer {
+  position:absolute;
+}
+.fileExport {
+  margin-left: 30px;
+  margin-top: 4px;
+  display: inline-block;
+  color: #409EFF;
+}
+.circle-button {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 4px 0 rgba(152, 142, 142, 1);
+  border-radius: 50%;
+  padding: 5px;
+}
 </style>
